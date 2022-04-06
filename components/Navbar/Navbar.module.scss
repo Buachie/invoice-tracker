@@ -1,0 +1,35 @@
+.nav{
+    height: 100vh;
+    width: 80px;
+    position: sticky;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #373b53;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    .logo{
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: red;
+        padding: 1em;
+    }
+
+    .tools{
+        display: flex;
+        flex-direction: column;
+        gap: 0.4em;
+        .divider{
+            height: 1px;
+            width: 95%;
+            margin: 0 auto;
+            background-color: gray;
+        }
+        img{
+            border-radius: 50%;
+            width: 50% !important;
+        }
+    }
+}

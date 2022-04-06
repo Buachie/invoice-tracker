@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "firebase": "^9.6.10",
     "next": "12.1.4",
+    "node-sass": "^7.0.1",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
