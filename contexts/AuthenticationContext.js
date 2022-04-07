@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
       console.log(currentUser);
     });
-
     return unsubscribe;
   }, []);
 
