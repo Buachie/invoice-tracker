@@ -34,6 +34,7 @@ const SignUp = () => {
               type="email"
               name="email"
               placeholder="Email"
+              autoComplete="email"
               className={styles.input}
             />
             <ErrorMessage name="email" component="div" />
@@ -41,6 +42,7 @@ const SignUp = () => {
               type="password"
               name="password"
               placeholder="Password"
+              autoComplete="new-password"
               className={styles.input}
             />
             <ErrorMessage name="password" component="div" />
@@ -48,6 +50,7 @@ const SignUp = () => {
               type="password"
               name="confirmPassword"
               placeholder="Confirm Password"
+              autoComplete="new-password"
               className={styles.input}
             />
             <ErrorMessage name="confirmPassword" component="div" />

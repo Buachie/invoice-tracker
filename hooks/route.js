@@ -6,7 +6,7 @@ export function withPublic(Component) {
     const auth = useAuth();
     const router = useRouter();
 
-    if (auth.currentUser != null) {
+    if (auth.currentUser !== null) {
       router.replace("/");
       return <h2>Loading...</h2>;
     }
@@ -20,7 +20,7 @@ export function withProtected(Component) {
     const router = useRouter();
 
     if (!auth.currentUser || auth.currentUser == null) {
-      router.replace("/signin");
+      router.replace("/login");
       return <h2>Loading...</h2>;
     }
     return <Component auth={auth} {...props} />;
