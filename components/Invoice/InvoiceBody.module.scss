@@ -1,0 +1,41 @@
+@import '../../styles/settings';
+
+.lightText{
+    color: $sub-font-color;
+    font-size: 0.8em;
+}
+.container{
+    width: 100%;
+    max-width: $component-width;
+    padding: 1em;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    background-color: #fff;
+}
+
+.invoiceHead{
+    grid-row: 1/2;
+    grid-column: 1/5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .fromAddress{
+        grid-column: 2/3;
+        text-align: right;
+        @include md{
+            grid-column: 1/2;
+            text-align: left;
+        }
+    }
+}
+
+.invoiceData{
+    grid-row: 2/2;
+    grid-column: 1/5;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,3 +1,5 @@
+@import '../../styles/settings';
+
 .nav{
     height: 100vh;
     width: 80px;
@@ -7,8 +9,13 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #373b53;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 0 20px 20px 0;
+    @include md{
+        height: 80px;
+        width: 100%;
+        flex-direction: row;
+        border-radius: 0;
+    }
 
     .logo{
         border-top-right-radius: 20px;
@@ -21,6 +28,9 @@
         display: flex;
         flex-direction: column;
         gap: 0.4em;
+        @include md {
+            flex-direction: row;
+        }
         .divider{
             height: 1px;
             width: 95%;
