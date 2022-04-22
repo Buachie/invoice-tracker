@@ -1,34 +1,20 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-// import { storage } from "../api/firebaseconfig";
-import {
-  getDoc,
-  doc,
-  collection,
-  getDocs,
-  getFirestore,
-} from "firebase/firestore";
+import { storage } from "../api/firebaseconfig";
+import { getDoc, doc, collection, getDocs } from "firebase/firestore";
 import InvoiceHeader from "../../components/Invoice/InvoiceHeader";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import InvoiceBody from "../../components/Invoice/InvoiceBody";
-
+import InvoiceFooter from "../../components/Invoice/InvoiceFooter";
+import styles from "./InvoiceSummary.module.scss";
 const InvoiceSummary = () => {
   const { currentUser } = useAuth();
   const router = useRouter();
-  const [id, setId] = useState(null);
   const invoiceId = router.query.id;
   const [invoice, setInvoice] = useState({});
   const [invoiceItems, setInvoiceItems] = useState([]);
   const [error, setError] = useState("");
-  const storage = getFirestore();
-  //   let invoiceRef = doc(
-  //     storage,
-  //     "users",
-  //     currentUser.uid,
-  //     "invoices",
-  //     invoiceId
-  //   );
 
   const getInvoice = async () => {
     const invoiceSnap = await getDoc(
@@ -71,7 +57,12 @@ const InvoiceSummary = () => {
       {invoiceId ? (
         <>
           <InvoiceHeader status={invoice.status} />
-          <InvoiceBody invoiceId={invoiceId} invoice={invoice} />
+          <InvoiceBody
+            invoiceId={invoiceId}
+            invoice={invoice}
+            items={invoiceItems}
+          />
+          <InvoiceFooter />
         </>
       ) : (
         <h3>Loading...</h3>

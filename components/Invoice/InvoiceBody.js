@@ -1,5 +1,5 @@
 import styles from "./InvoiceBody.module.scss";
-
+import InvoiceItems from "./InvoiceItems";
 const InvoiceBody = (props) => {
   return (
     <div className={styles.container}>
@@ -19,17 +19,17 @@ const InvoiceBody = (props) => {
         <div className={styles.date}>
           <div className={styles.receiptSection}>
             <p className={styles.lightText}>Invoice Date</p>
-            <h3>{props.invoice.invoiceDate}</h3>
+            <h4>{props.invoice.invoiceDate}</h4>
           </div>
           <div className={styles.receiptCol}>
             <p className={styles.lightText}>Payment Due</p>
-            <h3>{props.invoice.dueDate}</h3>
+            <h4>{props.invoice.dueDate}</h4>
           </div>
         </div>
 
         <div className={styles.clientInfo}>
           <p className={styles.lightText}>Bill To</p>
-          <h3>{props.invoice.clientName}</h3>
+          <h4>{props.invoice.clientName}</h4>
           <p className={styles.lightText}>{props.invoice.clientAddress}</p>
           <p className={styles.lightText}>{props.invoice.clientCity}</p>
           <p className={styles.lightText}>{props.invoice.clientPostCode}</p>
@@ -37,9 +37,10 @@ const InvoiceBody = (props) => {
         </div>
         <div className={styles.clientEmail}>
           <p className={styles.lightText}>Sent to</p>
-          <h3>{props.invoice.clientEmail}</h3>
+          <h4>{props.invoice.clientEmail}</h4>
         </div>
       </div>
+      <InvoiceItems items={props.items} />
     </div>
   );
 };
