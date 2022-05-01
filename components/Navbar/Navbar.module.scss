@@ -1,32 +1,60 @@
 @import '../../styles/settings';
-
+$nav-height: 80px;
 .nav{
-    height: 100vh;
+    min-height: 100vh;
     width: 80px;
     position: sticky;
-    z-index: 20;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #373b53;
     border-radius: 0 20px 20px 0;
     @include md{
-        height: 80px;
+        $nav-height: 80px;
+        min-height: $nav-height;
         width: 100%;
         flex-direction: row;
         border-radius: 0;
+        margin-bottom: 2em;
     }
 
     .logo{
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
-        background-color: red;
+        background-color: $primary-color;
+        height: $nav-height;
         padding: 1em;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: calc(#{$nav-height} / 2);
+            width: 100%;
+            background-color: $secondary-color;
+            border-radius: 15px 0 15px 0;
+            z-index: 3;
+        }
+
+        .icon{
+            width: 70%;
+            z-index: 4;
+            @include md{
+                width: 100%;
+            }
+        }
     }
 
     .tools{
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
         gap: 0.4em;
         @include md {
             flex-direction: row;
@@ -36,10 +64,20 @@
             width: 95%;
             margin: 0 auto;
             background-color: gray;
-        }
-        img{
-            border-radius: 50%;
-            width: 50% !important;
-        }
+            @include md {
+                height: 100%;
+                width: 1px;
+                margin: 0;
+            }
+        
     }
+    .avatar{
+            border-radius: 50%;
+            width: 100%;
+            padding: 1em;
+            @include md {
+                width:  60%;
+            }
+        }
+}
 }

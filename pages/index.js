@@ -8,6 +8,7 @@ import { useAuth } from "../contexts/AuthenticationContext";
 import { storage } from "./api/firebaseconfig";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "../styles/Home.module.scss";
+import InvoiceForm from "../components/form/Form";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -55,6 +56,7 @@ const Home = () => {
             <Image src="/illustration-emty.svg" width={50} height={50} />
           </div>
         )}
+        <InvoiceForm />
       </div>
     </>
   );

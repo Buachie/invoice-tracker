@@ -1,0 +1,93 @@
+@import "../../styles/settings";
+
+.container {
+    padding: 2em;
+    padding-left: 6em;
+    // position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    min-height: 100%;
+    width: 60%;
+    background-color: #fff;
+    border-radius: 0 20px 20px 0;
+    @include md {
+        margin-top: 5em;
+        width: 85%;
+        padding: 1em;
+    }
+    
+    & fieldset {
+        border: none;
+    }
+    form{
+        overflow-y: scroll;
+    }
+}
+
+.inputContainer {
+    margin: 1em 0;
+    width: 100%;
+    label{
+        font-weight: 600;
+        color: $sub-font-color;
+        font-size: 0.8em;
+    }
+    
+}
+.input{
+        display: block;
+        width: 100%;
+        padding: 1em;
+        border-radius: 5px;
+        border: 1px solid #DFE3FA;
+    }
+
+.multiInput {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    flex: 1;
+}
+
+.addItem{
+    width: 100%;
+    border: none;
+    border-radius: 24px;
+    color: $sub-font-color;
+    font-weight: bolder;
+    padding: 1em;
+    background-color: #F9FAFE;
+    &:hover{
+        background-color: #DFE3FA;
+    }
+}
+
+.deleteItem {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+.itemInput{
+    display: grid;
+    grid-template-columns: 2.5fr 4.125rem 1.25fr .75fr min-content;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    &:not(label:first-child) {
+
+            // display: none;
+        
+    }
+}
+
+.backdrop {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: min-content;
+    background-color: rgba(0, 0, 0, 0.267);
+    overflow: hidden;
+}

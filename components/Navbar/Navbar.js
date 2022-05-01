@@ -1,14 +1,16 @@
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
+import Logo from "/public/logo.svg";
+
 const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <Image src="/logo.svg" alt="invoicer-logo" width={50} height={50} />
+        <img className={styles.icon} src="/logo.svg" alt="invoicer-logo" />
       </div>
       <div className={styles.tools}>
         <div className={styles.divider}></div>
-        <Image src="/image-avatar.jpg" width={30} height={60} />
+        <img className={styles.avatar} src="/image-avatar.jpg" />
       </div>
     </nav>
   );
