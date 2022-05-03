@@ -18,7 +18,7 @@ const Invoice = (props) => {
       <div className={styles.invoiceTotal}>{`$${props.total}`}</div>
       <div
         className={`${styles.invoiceStatus} ${
-          props.status === "Pending" ? styles.pending : styles.paid
+          props.status === "pending" ? styles.pending : styles.paid
         }`}
       >
         <span className={styles.bullet}>&#9679;</span>

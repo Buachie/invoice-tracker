@@ -6,28 +6,29 @@ import { doc, addDoc, setDoc, collection } from "firebase/firestore";
 import InvoiceFields from "./Form";
 import styles from "./Form.module.scss";
 import Backdrop from "./Backdrop";
-import Invoice from "../Invoice/Invoice";
+import { createInvoice } from "../../utilities/Form";
 
 const CreateInvoice = () => {
   const { currentUser } = useAuth();
 
+  const onSubmit = async (values) => {
+    await addDoc(
+      collection(storage, "users", currentUser.uid, "invoices"),
+      createInvoice("pending", values)
+    );
+  };
+
+  const addDraft = async (values) => {
+    await addDoc(
+      collection(storage, "users", currentUser.uid, "drafts"),
+      createInvoice("draft", values)
+    );
+  };
+
   return (
     <Backdrop>
       <div className={styles.container}>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={async (values, { setSubmitting }) => {
-            try {
-              console.log(values);
-              await addDoc(
-                collection(storage, "users", currentUser.uid, "invoices"),
-                values
-              );
-            } catch (error) {
-              console.log(error);
-            }
-          }}
-        >
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
           <Form>
             <InvoiceFields />
             <div className={styles.buttonContainer}>
