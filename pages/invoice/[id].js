@@ -35,11 +35,6 @@ const InvoiceSummary = () => {
       setError("");
       console.log("Document data: ", invoiceSnap.data());
       setInvoice(invoiceSnap.data());
-      setInvoiceItems(
-        invoiceItemSnap.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
-        })
-      );
     } else {
       setError("Invoice Not Found");
     }

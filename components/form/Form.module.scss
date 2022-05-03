@@ -23,6 +23,9 @@
     form{
         overflow-y: scroll;
     }
+    h4{
+        color: $primary-color;
+    }
 }
 
 .inputContainer {
@@ -90,4 +93,17 @@
     height: min-content;
     background-color: rgba(0, 0, 0, 0.267);
     overflow: hidden;
+}
+
+.buttonContainer {
+    * {
+        padding: 1em;
+        border: none;
+        border-radius: 24px;
+        font-weight: bold;
+    }
+    .submit {
+        color: #fff;
+        background-color: $primary-color;
+    }
 }

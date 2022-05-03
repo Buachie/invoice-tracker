@@ -9,6 +9,7 @@ import { storage } from "./api/firebaseconfig";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "../styles/Home.module.scss";
 import InvoiceForm from "../components/form/Form";
+import CreateInvoice from "../components/form/CreateInvoice";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -53,10 +54,16 @@ const Home = () => {
           })
         ) : (
           <div>
-            <Image src="/illustration-emty.svg" width={50} height={50} />
+            <img src="/illustration-empty.svg" />
+            <h1>There is nothing here</h1>
+            <p>
+              Create an invoice by clicking the <br />
+              <span className={styles.bold}>New Invoice</span> button and get
+              started
+            </p>
           </div>
         )}
-        <InvoiceForm />
+        <CreateInvoice />
       </div>
     </>
   );
