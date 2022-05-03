@@ -7,22 +7,25 @@
     top: 0;
     left: 0;
     z-index: 10000;
-    min-height: 100%;
+    height: 100%;
     width: 60%;
     background-color: #fff;
     border-radius: 0 20px 20px 0;
+    overflow-y: scroll;
     @include md {
         margin-top: 5em;
         width: 85%;
         padding: 1em;
     }
+    @include sm {
+        width: 100%;
+        border-radius: 0;
+    }
     
     & fieldset {
         border: none;
     }
-    form{
-        overflow-y: scroll;
-    }
+    
     h4{
         color: $primary-color;
     }
@@ -40,6 +43,8 @@
 }
 .input{
         display: block;
+        font-family: $primary-font;
+        font-weight: bold;
         width: 100%;
         padding: 1em;
         border-radius: 5px;
@@ -51,6 +56,9 @@
     flex-direction: row;
     gap: 1em;
     flex: 1;
+    @include sm {
+        flex-direction: column;
+    }
 }
 
 .addItem{
@@ -78,11 +86,6 @@
     gap: 1em;
     align-items: center;
     justify-content: center;
-    &:not(label:first-child) {
-
-            // display: none;
-        
-    }
 }
 
 .backdrop {
@@ -90,9 +93,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: min-content;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.267);
     overflow: hidden;
+    
 }
 
 .buttonContainer {

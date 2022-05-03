@@ -16,7 +16,7 @@ export const initialValues = {
     country: "",
   },
   createdAt: new Date(),
-  paymentTerms: 30,
+  paymentTerms: "30",
   description: "",
   items: [
     {
