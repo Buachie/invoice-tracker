@@ -18,10 +18,10 @@ const InvoiceItems = ({ items }) => {
           {items.map((item) => {
             return (
               <tr>
-                <td className={styles.data}>{item.ItemName}</td>
-                <td className={styles.data}>{item.Qty}</td>
-                <td className={styles.data}>{item.Price}</td>
-                <td className={styles.data}>{item.Total}</td>
+                <td className={styles.data}>{item.name}</td>
+                <td className={styles.data}>{item.qty}</td>
+                <td className={styles.data}>{item.price}</td>
+                <td className={styles.data}>{item.total}</td>
               </tr>
             );
           })}

@@ -1,17 +1,17 @@
 import styles from "./InvoiceHeader.module.scss";
 
-const InvoiceHeader = (props) => {
+const InvoiceHeader = ({ status }) => {
   return (
     <div className={styles.container}>
       <div className={styles.status}>
         <span>Status</span>{" "}
         <div
           className={`${styles.invoiceStatus} ${
-            props.status === "Pending" ? styles.pending : styles.paid
+            status === "Pending" ? styles.pending : styles.paid
           }`}
         >
           <span className={styles.bullet}>&#9679;</span>
-          {props.status}
+          {status}
         </div>{" "}
       </div>
       <div className={styles.options}>

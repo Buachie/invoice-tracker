@@ -11,14 +11,14 @@ const Invoice = (props) => {
     <div className={styles.invoice} onClick={showFullInvoiceHandler}>
       <div className={styles.invoiceId}>
         <span>#</span>
-        {props.invoiceId}
+        {props.invoiceId.substring(0, 5)}
       </div>
-      <div className={styles.dueDate}>Due {props.dueDate}</div>
+      <div className={styles.dueDate}>Due {props.paymentDue}</div>
       <div className={styles.clientName}>{props.clientName}</div>
       <div className={styles.invoiceTotal}>{`$${props.total}`}</div>
       <div
         className={`${styles.invoiceStatus} ${
-          props.status === "pending" ? styles.pending : styles.paid
+          props.status === "Pending" ? styles.pending : styles.paid
         }`}
       >
         <span className={styles.bullet}>&#9679;</span>

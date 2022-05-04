@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
-// import { withProtected } from "../hooks/route";
 import Invoice from "../components/Invoice/Invoice";
 import { useAuth } from "../contexts/AuthenticationContext";
 import { storage } from "./api/firebaseconfig";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "../styles/Home.module.scss";
-import InvoiceForm from "../components/form/Form";
 import CreateInvoice from "../components/form/CreateInvoice";
 
 const Home = () => {
   const { currentUser } = useAuth();
   const [invoices, setInvoices] = useState([]);
+  const [formIsOpen, setFormIsOpen] = useState(false);
 
   const getInvoices = async () => {
     const querySnapshot = await getDocs(
@@ -45,9 +42,9 @@ const Home = () => {
               <Invoice
                 key={key}
                 invoiceId={invoice.id}
-                dueDate={invoice.dueDate}
+                paymentDue={invoice.paymentDue}
                 clientName={invoice.clientName}
-                total={invoice.grandTotal}
+                total={invoice.total}
                 status={invoice.status}
               />
             );
@@ -63,7 +60,7 @@ const Home = () => {
             </p>
           </div>
         )}
-        <CreateInvoice />
+        <CreateInvoice isOpen={formIsOpen} setIsOpen={setFormIsOpen} />
       </div>
     </>
   );

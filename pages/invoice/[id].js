@@ -2,39 +2,28 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { storage } from "../api/firebaseconfig";
-import { getDoc, doc, collection, getDocs } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import InvoiceHeader from "../../components/Invoice/InvoiceHeader";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import InvoiceBody from "../../components/Invoice/InvoiceBody";
 import InvoiceFooter from "../../components/Invoice/InvoiceFooter";
-import styles from "./InvoiceSummary.module.scss";
+
 const InvoiceSummary = () => {
   const { currentUser } = useAuth();
   const router = useRouter();
   const invoiceId = router.query.id;
-  const [invoice, setInvoice] = useState({});
-  const [invoiceItems, setInvoiceItems] = useState([]);
+  const [invoice, setInvoice] = useState(null);
   const [error, setError] = useState("");
 
   const getInvoice = async () => {
     const invoiceSnap = await getDoc(
       doc(storage, "users", currentUser.uid, "invoices", invoiceId)
     );
-    const invoiceItemSnap = await getDocs(
-      collection(
-        storage,
-        "users",
-        currentUser.uid,
-        "invoices",
-        invoiceId,
-        "items"
-      )
-    );
-
     if (invoiceSnap.exists()) {
       setError("");
       console.log("Document data: ", invoiceSnap.data());
       setInvoice(invoiceSnap.data());
+      console.log("Invoice: ", invoice);
     } else {
       setError("Invoice Not Found");
     }
@@ -42,6 +31,7 @@ const InvoiceSummary = () => {
 
   useEffect(() => {
     getInvoice();
+    console.log(invoice);
   }, []);
 
   return (
@@ -49,14 +39,10 @@ const InvoiceSummary = () => {
       <Head>
         <title>Invoice #{invoiceId}</title>
       </Head>
-      {invoiceId ? (
+      {invoice ? (
         <>
           <InvoiceHeader status={invoice.status} />
-          <InvoiceBody
-            invoiceId={invoiceId}
-            invoice={invoice}
-            items={invoiceItems}
-          />
+          <InvoiceBody invoiceId={invoiceId} invoice={invoice} />
           <InvoiceFooter />
         </>
       ) : (

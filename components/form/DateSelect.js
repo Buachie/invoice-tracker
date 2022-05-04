@@ -1,11 +1,7 @@
-import { useField, useFormikContext } from "formik";
-import React from "react";
-import ReactDatePicker from "react-datepicker";
-// import "react-datepicker/dist/react.datepicker.css";
+import { useField } from "formik";
 import styles from "./Form.module.scss";
 
 const DateSelect = ({ label, name, ...rest }) => {
-  const { setFieldValue } = useFormikContext();
   const [field, meta] = useField(name);
 
   return (
