@@ -28,12 +28,12 @@
             padding-right: 0.4em;
         }
         &.pending{
-            color: #ff8f00;
-            background-color: darken(#ff8f00, 15%)
+            background-color: lighten(#ff8f00, 40%);
+            color: #ff8f00
         }
         &.paid{
-            color: #33d69f;
-            background-color: darken(#33d69f, 15%);
+            background-color: lighten(#33D69F, 40%);
+            color: #33D69F;
         }
     }
 

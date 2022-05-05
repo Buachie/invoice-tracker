@@ -6,6 +6,7 @@ import { storage } from "./api/firebaseconfig";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "../styles/Home.module.scss";
 import CreateInvoice from "../components/form/CreateInvoice";
+import Toolbar from "../components/toolbar/Toolbar";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -35,6 +36,7 @@ const Home = () => {
         <meta name="description" content="Available invoices" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Toolbar setFormIsOpen={setFormIsOpen} />
       <div className={styles.container}>
         {invoices.length > 0 ? (
           invoices.map((invoice, key) => {

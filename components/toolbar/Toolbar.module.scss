@@ -1,0 +1,24 @@
+@import '../../styles/settings';
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2em;
+}
+
+.addInvoice {
+    padding: 1em;
+    border: none;
+    border-radius: 24px;
+    background-color:$primary-color;
+    color: #fff;
+    font-weight: bold;
+}

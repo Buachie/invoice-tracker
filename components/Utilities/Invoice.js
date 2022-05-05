@@ -9,4 +9,6 @@ export function markAsPaid(invoice, currentUser) {
   );
 }
 
-export function deleteInvoice(invoice, currentUser) {}
+export function deleteInvoice(invoice, currentUser) {
+  deleteDoc(doc(storage, "users", currentUser.uid, "invoices", invoice));
+}
