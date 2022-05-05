@@ -40,7 +40,7 @@ const InvoiceBody = ({ invoice, invoiceId }) => {
           <h4>{invoice.clientEmail}</h4>
         </div>
       </div>
-      <InvoiceItems items={invoice.items} />
+      <InvoiceItems items={invoice.items} total={invoice.total} />
     </div>
   );
 };

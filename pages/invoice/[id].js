@@ -41,7 +41,11 @@ const InvoiceSummary = () => {
       </Head>
       {invoice ? (
         <>
-          <InvoiceHeader status={invoice.status} />
+          <InvoiceHeader
+            status={invoice.status}
+            id={invoiceId}
+            currentUser={currentUser}
+          />
           <InvoiceBody invoiceId={invoiceId} invoice={invoice} />
           <InvoiceFooter />
         </>

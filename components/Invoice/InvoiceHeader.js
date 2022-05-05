@@ -1,6 +1,7 @@
 import styles from "./InvoiceHeader.module.scss";
+import { markAsPaid } from "../Utilities/Invoice";
 
-const InvoiceHeader = ({ status }) => {
+const InvoiceHeader = ({ status, id, currentUser }) => {
   return (
     <div className={styles.container}>
       <div className={styles.status}>
@@ -17,7 +18,12 @@ const InvoiceHeader = ({ status }) => {
       <div className={styles.options}>
         <button className={styles.edit}>Edit</button>
         <button className={styles.delete}>Delete</button>
-        <button className={styles.markPaid}>Mark as Paid</button>
+        <button
+          onClick={() => markAsPaid(id, currentUser)}
+          className={styles.markPaid}
+        >
+          Mark as Paid
+        </button>
       </div>
     </div>
   );

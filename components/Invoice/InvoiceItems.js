@@ -1,6 +1,6 @@
 import styles from "./InvoiceItems.module.scss";
 
-const InvoiceItems = ({ items }) => {
+const InvoiceItems = ({ items, total }) => {
   console.log(items);
   return (
     <div className={styles.container}>
@@ -29,7 +29,7 @@ const InvoiceItems = ({ items }) => {
       </table>
       <div className={styles.footer}>
         <p>Amount Due</p>
-        <h2>$1000</h2>
+        <h2>{total}</h2>
       </div>
     </div>
   );
