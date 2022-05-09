@@ -3,10 +3,10 @@
 .container {
     padding: 2em;
     padding-left: 6em;
-    // position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 10000;
+    z-index: 1000;
     height: 100%;
     width: 60%;
     background-color: #fff;
@@ -90,6 +90,7 @@
 
 .backdrop {
     position:absolute;
+    // z-index: -1;
     top: 0;
     left: 0;
     width: 100%;

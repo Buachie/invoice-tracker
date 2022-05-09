@@ -52,7 +52,7 @@ const Home = () => {
             );
           })
         ) : (
-          <div>
+          <div className={styles.noInvoices}>
             <img src="/illustration-empty.svg" />
             <h1>There is nothing here</h1>
             <p>

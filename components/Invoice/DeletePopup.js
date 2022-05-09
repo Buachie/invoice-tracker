@@ -1,5 +1,6 @@
 import React from "react";
 import Backdrop from "../form/Backdrop";
+import { deleteInvoice } from "../Utilities/Invoice";
 
 const DeletePopup = ({ invoiceId, isOpen, setIsOpen }) => {
   return (
@@ -12,7 +13,9 @@ const DeletePopup = ({ invoiceId, isOpen, setIsOpen }) => {
         </p>
         <div className={styles.buttonContainer}>
           <button type="button">Cancel</button>
-          <button type="button">Delete</button>
+          <button type="button" onClick={() => deleteInvoice()}>
+            Delete
+          </button>
         </div>
       </div>
     </Backdrop>
