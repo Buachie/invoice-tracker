@@ -31,7 +31,7 @@ const InvoiceHeader = ({ status, id, currentUser }) => {
           Mark as Paid
         </button>
       </div>
-      {openPopup && <DeletePopup isOpen={openPopup} />}
+      {openPopup && <DeletePopup invoiceId={id} isOpen={openPopup} />}
     </div>
   );
 };

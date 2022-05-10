@@ -31,7 +31,7 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {(formik) => (
             <Form setIsOpen={setIsOpen}>
-              <InvoiceFields onClick={isOpen == true} />
+              <InvoiceFields />
               <div className={styles.buttonContainer}>
                 <button type="button" onClick={() => setIsOpen(false)}>
                   Discard

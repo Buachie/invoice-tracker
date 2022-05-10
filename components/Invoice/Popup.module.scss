@@ -1,0 +1,21 @@
+.container{
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+button{
+    border: none;
+    padding: 1em;
+    border-radius: 24px;
+    font-weight: bold;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.delete {
+    background-color: red;
+    color: #fff;
+}
+}
