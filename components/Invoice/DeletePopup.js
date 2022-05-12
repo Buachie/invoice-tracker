@@ -12,28 +12,36 @@ const DeletePopup = ({ invoiceId, isOpen, setIsOpen }) => {
     deleteInvoice(invoiceId, currentUser);
     router.replace("/");
   };
+
   return (
     <>
-      <Backdrop setIsOpen={isOpen} />
-      <div className={styles.container}>
-        <h2>Confirm Deletion</h2>
-        <p>
-          Are you sure you want to delete invoice #{invoiceId}? This action
-          cannot be undone.
-        </p>
-        <div className={styles.buttonContainer}>
-          <button className={styles.cancel} type="button">
-            Cancel
-          </button>
-          <button
-            className={styles.delete}
-            type="button"
-            onClick={confirmDelete}
-          >
-            Delete
-          </button>
-        </div>
-      </div>
+      {isOpen && (
+        <Backdrop setIsOpen={setIsOpen}>
+          <div className={styles.container}>
+            <h2>Confirm Deletion</h2>
+            <p>
+              Are you sure you want to delete invoice #{invoiceId}? This action
+              cannot be undone.
+            </p>
+            <div className={styles.buttonContainer}>
+              <button
+                className={styles.cancel}
+                type="button"
+                onClick={() => setIsOpen(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className={styles.delete}
+                type="button"
+                onClick={confirmDelete}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </Backdrop>
+      )}
     </>
   );
 };

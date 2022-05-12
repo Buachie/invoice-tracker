@@ -7,6 +7,7 @@ import InvoiceHeader from "../../components/Invoice/InvoiceHeader";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import InvoiceBody from "../../components/Invoice/InvoiceBody";
 import InvoiceFooter from "../../components/Invoice/InvoiceFooter";
+import DeletePopup from "../../components/Invoice/DeletePopup";
 
 const InvoiceSummary = () => {
   const { currentUser } = useAuth();
@@ -14,6 +15,7 @@ const InvoiceSummary = () => {
   const invoiceId = router.query.id;
   const [invoice, setInvoice] = useState(null);
   const [error, setError] = useState("");
+  const [popupIsOpen, setPopupIsOpen] = useState(false);
 
   const getInvoice = async () => {
     const invoiceSnap = await getDoc(
@@ -37,11 +39,17 @@ const InvoiceSummary = () => {
   return (
     <>
       <Head>
-        <title>Invoice #{invoiceId}</title>
+        <title>Invoice #{invoiceId.substring(0, 5)}</title>
       </Head>
+      <DeletePopup
+        invoiceId={invoiceId}
+        isOpen={popupIsOpen}
+        setIsOpen={setPopupIsOpen}
+      />
       {invoice ? (
         <>
           <InvoiceHeader
+            setPopupIsOpen={setPopupIsOpen}
             status={invoice.status}
             id={invoiceId}
             currentUser={currentUser}
