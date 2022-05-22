@@ -33,7 +33,7 @@ const InvoiceSummary = () => {
 
   useEffect(() => {
     getInvoice();
-    console.log(invoice);
+    // console.log(invoice);
   }, []);
 
   return (
