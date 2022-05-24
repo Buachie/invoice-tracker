@@ -1,18 +1,13 @@
-import { useState } from "react";
 import styles from "./InvoiceHeader.module.scss";
-import { markAsPaid, deleteInvoice } from "../Utilities/Invoice";
-import DeletePopup from "./DeletePopup";
-import Backdrop from "../form/Backdrop";
+import { markAsPaid } from "../Utilities/Invoice";
 
 const InvoiceHeader = ({
   status,
   id,
   currentUser,
-  popupIsOpen,
   setPopupIsOpen,
+  setFormIsOpen,
 }) => {
-  const [openPopup, setOpenPopup] = useState(false);
-
   return (
     <div className={styles.container}>
       <div className={styles.status}>
@@ -27,7 +22,9 @@ const InvoiceHeader = ({
         </div>{" "}
       </div>
       <div className={styles.options}>
-        <button className={styles.edit}>Edit</button>
+        <button className={styles.edit} onClick={() => setFormIsOpen(true)}>
+          Edit
+        </button>
         <button onClick={() => setPopupIsOpen(true)} className={styles.delete}>
           Delete
         </button>
@@ -38,20 +35,6 @@ const InvoiceHeader = ({
           Mark as Paid
         </button>
       </div>
-      {/* {popupIsOpen && (
-        <>
-          <Backdrop
-            setIsOpen={setPopupIsOpen}
-            // onClick={() => setOpenPopup(false)}
-          >
-            <DeletePopup
-              invoiceId={id}
-              isOpen={setPopupIsOpen}
-              setIsOpen={setPopupIsOpen}
-            />
-          </Backdrop>
-        </>
-      )} */}
     </div>
   );
 };

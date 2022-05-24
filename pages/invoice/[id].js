@@ -8,6 +8,7 @@ import { useAuth } from "../../contexts/AuthenticationContext";
 import InvoiceBody from "../../components/Invoice/InvoiceBody";
 import InvoiceFooter from "../../components/Invoice/InvoiceFooter";
 import DeletePopup from "../../components/Invoice/DeletePopup";
+import EditInvoice from "../../components/form/EditInvoice";
 
 const InvoiceSummary = () => {
   const { currentUser } = useAuth();
@@ -16,6 +17,7 @@ const InvoiceSummary = () => {
   const [invoice, setInvoice] = useState(null);
   const [error, setError] = useState("");
   const [popupIsOpen, setPopupIsOpen] = useState(false);
+  const [formIsOpen, setFormIsOpen] = useState(false);
 
   const getInvoice = async () => {
     const invoiceSnap = await getDoc(
@@ -50,6 +52,7 @@ const InvoiceSummary = () => {
         <>
           <InvoiceHeader
             setPopupIsOpen={setPopupIsOpen}
+            setFormIsOpen={setFormIsOpen}
             status={invoice.status}
             id={invoiceId}
             currentUser={currentUser}
@@ -60,6 +63,12 @@ const InvoiceSummary = () => {
       ) : (
         <h3>Loading...</h3>
       )}
+      <EditInvoice
+        isOpen={formIsOpen}
+        setIsOpen={setFormIsOpen}
+        invoice={invoice}
+        invoiceId={invoiceId}
+      />
     </>
   );
 };
