@@ -1,8 +1,9 @@
+import { useState } from "react";
+import NavMenu from "./NavMenu";
 import styles from "./Navbar.module.scss";
-import Image from "next/image";
-import Logo from "/public/logo.svg";
 
 const Navbar = () => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
@@ -10,7 +11,12 @@ const Navbar = () => {
       </div>
       <div className={styles.tools}>
         <div className={styles.divider}></div>
-        <img className={styles.avatar} src="/image-avatar.jpg" />
+        <img
+          className={styles.avatar}
+          src="/image-avatar.jpg"
+          onClick={() => setMenuIsOpen(true)}
+        />
+        <NavMenu isOpen={menuIsOpen} />
       </div>
     </nav>
   );
