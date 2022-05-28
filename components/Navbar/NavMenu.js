@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import styles from "./Navbar.module.scss";
 
-const NavMenu = ({ isOpen, setIsOpen }) => {
+const NavMenu = ({ isOpen, setLoginIsOpen, setRegisterIsOpen }) => {
   const { currentUser, logout } = useAuth();
 
   return (
@@ -10,11 +9,14 @@ const NavMenu = ({ isOpen, setIsOpen }) => {
       {isOpen && (
         <div className={styles.container}>
           {currentUser ? (
-            <div>
+            <div className={styles.navItems}>
               <button onClick={logout}>Sign Out</button>
             </div>
           ) : (
-            ""
+            <div className={styles.navItems}>
+              <button onClick={() => setLoginIsOpen(true)}>Login</button>
+              <button onClick={() => setRegisterIsOpen(true)}>Register</button>
+            </div>
           )}
         </div>
       )}

@@ -24,8 +24,8 @@ const Home = () => {
     );
   };
   useEffect(() => {
-    getInvoices();
-  }, []);
+    currentUser ? getInvoices() : "";
+  }, [currentUser]);
 
   console.log(invoices);
 
@@ -37,33 +37,45 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Toolbar setFormIsOpen={setFormIsOpen} />
-      <div className={styles.container}>
-        {invoices.length > 0 ? (
-          invoices.map((invoice, key) => {
-            return (
-              <Invoice
-                key={key}
-                invoiceId={invoice.id}
-                paymentDue={invoice.paymentDue}
-                clientName={invoice.clientName}
-                total={invoice.total}
-                status={invoice.status}
-              />
-            );
-          })
-        ) : (
-          <div className={styles.noInvoices}>
-            <img src="/illustration-empty.svg" />
-            <h1>There is nothing here</h1>
-            <p>
-              Create an invoice by clicking the <br />
-              <span className={styles.bold}>New Invoice</span> button and get
-              started
-            </p>
-          </div>
-        )}
-        <CreateInvoice isOpen={formIsOpen} setIsOpen={setFormIsOpen} />
-      </div>
+      {currentUser ? (
+        <div className={styles.container}>
+          {invoices.length > 0 ? (
+            invoices.map((invoice, key) => {
+              return (
+                <Invoice
+                  key={key}
+                  invoiceId={invoice.id}
+                  paymentDue={invoice.paymentDue}
+                  clientName={invoice.clientName}
+                  total={invoice.total}
+                  status={invoice.status}
+                />
+              );
+            })
+          ) : (
+            <div className={styles.noInvoices}>
+              <img src="/illustration-empty.svg" />
+              <h1>There is nothing here</h1>
+              <p>
+                Create an invoice by clicking the <br />
+                <span className={styles.bold}>New Invoice</span> button and get
+                started
+              </p>
+            </div>
+          )}
+          <CreateInvoice isOpen={formIsOpen} setIsOpen={setFormIsOpen} />
+        </div>
+      ) : (
+        <div className={styles.noInvoices}>
+          <img src="/illustration-empty.svg" />
+          <h1>There is nothing here</h1>
+          <p>
+            Create an invoice by clicking the <br />
+            <span className={styles.bold}>New Invoice</span> button and sign in
+            to get started
+          </p>
+        </div>
+      )}
     </>
   );
 };
