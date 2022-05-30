@@ -6,6 +6,11 @@ const Toolbar = ({ invoices, setFormIsOpen }) => {
     <div className={styles.container}>
       <div className={styles.invoiceData}>
         <h1>Invoices</h1>
+        <p>
+          {invoices.length > 0
+            ? `There are ${invoices.length} total invoices`
+            : "No Invoices"}
+        </p>
       </div>
       <div className={styles.options}>
         <p>Filter by status</p>

@@ -3,7 +3,8 @@
 .container {
     padding: 2em;
     padding-left: 6em;
-    position: fixed;
+    // position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -19,6 +20,7 @@
     }
     @include sm {
         width: 100%;
+        height: auto;
         border-radius: 0;
     }
     

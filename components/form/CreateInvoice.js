@@ -20,7 +20,7 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
 
   const addDraft = async (values) => {
     await addDoc(
-      collection(storage, "users", currentUser.uid, "drafts"),
+      collection(storage, "users", currentUser.uid, "invoices"),
       createInvoice("Draft", values)
     );
   };

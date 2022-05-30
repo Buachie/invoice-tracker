@@ -4,13 +4,14 @@ import styles from "./Form.module.scss";
 import Items from "./Items";
 import Select from "./Select";
 
-const InvoiceFields = ({ title, submitBtn, redirect }) => {
+const InvoiceFields = ({ title }) => {
   const dropdownOptions = [
     { name: "Net 1 Day", value: 1 },
     { name: "Net 7 Days", value: 7 },
     { name: "Net 14 Days", value: 14 },
     { name: "Net 30 Days", value: 30 },
   ];
+
   return (
     <>
       <h2>{title}</h2>

@@ -1,5 +1,11 @@
 @import "../../styles/settings";
 
+    .nav{
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+        align-self: flex-start;
+    }
 .container {
     width: 100%;
     display: flex;
@@ -18,22 +24,6 @@
         @include sm {
             width: 100%;
             justify-content: space-between;
-        }
-    }
-
-    .invoiceStatus{
-        padding: 1em;
-        border-radius: 6px;
-        .bullet{
-            padding-right: 0.4em;
-        }
-        &.pending{
-            background-color: lighten(#ff8f00, 40%);
-            color: #ff8f00
-        }
-        &.paid{
-            background-color: lighten(#33D69F, 40%);
-            color: #33D69F;
         }
     }
 

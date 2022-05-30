@@ -36,7 +36,7 @@ const Home = () => {
         <meta name="description" content="Available invoices" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Toolbar setFormIsOpen={setFormIsOpen} />
+      <Toolbar setFormIsOpen={setFormIsOpen} invoices={invoices} />
       {currentUser ? (
         <div className={styles.container}>
           {invoices.length > 0 ? (

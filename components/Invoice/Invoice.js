@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import InvoiceStatus from "../shared/InvoiceStatus";
 import styles from "./Invoice.module.scss";
 
 const Invoice = (props) => {
@@ -16,14 +17,7 @@ const Invoice = (props) => {
       <div className={styles.dueDate}>Due {props.paymentDue}</div>
       <div className={styles.clientName}>{props.clientName}</div>
       <div className={styles.invoiceTotal}>{`$${props.total}`}</div>
-      <div
-        className={`${styles.invoiceStatus} ${
-          props.status === "Pending" ? styles.pending : styles.paid
-        }`}
-      >
-        <span className={styles.bullet}>&#9679;</span>
-        {props.status}
-      </div>
+      <InvoiceStatus status={props.status} />
       <div className={styles.arrow}>
         <img src="/icon-arrow-right.svg" alt="" />
       </div>

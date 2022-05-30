@@ -59,7 +59,13 @@ const InvoiceSummary = () => {
             currentUser={currentUser}
           />
           <InvoiceBody invoiceId={invoiceId} invoice={invoice} />
-          <InvoiceFooter />
+          <InvoiceFooter
+            status={invoice.status}
+            setPopupIsOpen={setPopupIsOpen}
+            setFormIsOpen={setFormIsOpen}
+            currentUser={currentUser}
+            id={invoiceId}
+          />
         </>
       ) : (
         <h3>Loading...</h3>

@@ -13,11 +13,12 @@ const Navbar = ({ isOpen, setIsOpen, setLoginIsOpen, setRegisterIsOpen }) => {
         <div className={styles.divider}></div>
         <img
           className={styles.avatar}
-          src="/image-avatar.jpg"
+          src="/user-icon.jpg"
           onClick={() => setMenuIsOpen(true)}
         />
         <NavMenu
           isOpen={menuIsOpen}
+          setIsOpen={setMenuIsOpen}
           setLoginIsOpen={setLoginIsOpen}
           setRegisterIsOpen={setRegisterIsOpen}
         />

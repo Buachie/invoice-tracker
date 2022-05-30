@@ -1,11 +1,15 @@
 @import '../../styles/settings';
 
 .container{
+    padding: 0 2em;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    @include md {
+        padding: 0 0.5em;
+    }
 }
 .options {
     display: flex;

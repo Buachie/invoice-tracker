@@ -1,6 +1,5 @@
 import { storage } from "../../pages/api/firebaseconfig";
 import { setDoc, doc, deleteDoc } from "firebase/firestore";
-import { useRouter } from "next/router";
 
 export function markAsPaid(invoice, currentUser) {
   setDoc(

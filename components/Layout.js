@@ -12,15 +12,18 @@ const Layout = ({ children }) => {
 
   return (
     <AuthProvider>
-      <div className={styles.container}>
+      <div className={styles.container} onClick={() => setMenuIsOpen(false)}>
         <Navbar
+          isOpen={menuIsOpen}
           setIsOpen={setMenuIsOpen}
           setLoginIsOpen={setLoginIsOpen}
           setRegisterIsOpen={setRegisterIsOpen}
         />
         <SignIn isOpen={loginIsOpen} setIsOpen={setLoginIsOpen} />
         <SignUp isOpen={registerIsOpen} setIsOpen={setRegisterIsOpen} />
-        <main className={styles.main}>{children}</main>
+        <main className={styles.main} onClick={() => setMenuIsOpen(false)}>
+          {children}
+        </main>
       </div>
     </AuthProvider>
   );

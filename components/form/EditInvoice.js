@@ -38,7 +38,7 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
         >
           {(formik) => (
             <Form setIsOpen={setIsOpen}>
-              <InvoiceFields />
+              <InvoiceFields title={"Edit Invoice"} />
 
               <div className={styles.buttonContainer}>
                 <button type="button" onClick={() => setIsOpen(false)}>

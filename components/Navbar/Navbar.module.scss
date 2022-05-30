@@ -86,12 +86,14 @@ $nav-height: 80px;
     background-color: #fff;
     padding: 0.5em;
     border-radius: 15px;
-    // position: relative;
-    top: -70%;
-    left: 80%;
     position: absolute;
     top:-100%;
     left: 60%;
+
+    @include md {
+        top: 70%;
+        left: -60%;
+    }
 }
 
 .navItems{

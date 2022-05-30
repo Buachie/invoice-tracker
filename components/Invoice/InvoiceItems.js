@@ -1,7 +1,7 @@
 import styles from "./InvoiceItems.module.scss";
 
 const InvoiceItems = ({ items, total }) => {
-  console.log(items);
+  // console.log(items);
   return (
     <div className={styles.container}>
       <table className={styles.tbody}>
@@ -20,8 +20,8 @@ const InvoiceItems = ({ items, total }) => {
               <tr>
                 <td className={styles.data}>{item.name}</td>
                 <td className={styles.data}>{item.qty}</td>
-                <td className={styles.data}>{item.price}</td>
-                <td className={styles.data}>{item.total}</td>
+                <td className={styles.data}>${item.price}</td>
+                <td className={styles.data}>${item.total}</td>
               </tr>
             );
           })}
@@ -29,7 +29,7 @@ const InvoiceItems = ({ items, total }) => {
       </table>
       <div className={styles.footer}>
         <p>Amount Due</p>
-        <h2>{total}</h2>
+        <h2>${total}</h2>
       </div>
     </div>
   );
