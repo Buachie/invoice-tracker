@@ -98,11 +98,17 @@ $nav-height: 80px;
 
 .navItems{
     display: flex;
-flex-direction: column;
-button{
-    margin: 0.5em;
-    padding: 1em;
-    border: none;
-    border-radius: 10px;
-}
+    flex-direction: column;
+
+    button{
+        margin: 0.5em;
+        padding: 1em;
+        border: none;
+        border-radius: 10px;
+        &:hover{
+            transition: 0.3s ease-in-out;
+            background-color: $primary-color;
+            color: #fff;
+        }
+    }
 }
