@@ -7,11 +7,13 @@ import { collection, getDocs } from "firebase/firestore";
 import styles from "../styles/Home.module.scss";
 import CreateInvoice from "../components/form/CreateInvoice";
 import Toolbar from "../components/toolbar/Toolbar";
+import SignIn from "../components/Authentication/SignIn";
 
 const Home = () => {
   const { currentUser } = useAuth();
   const [invoices, setInvoices] = useState([]);
   const [formIsOpen, setFormIsOpen] = useState(false);
+  const [loginIsOpen, setLoginIsOpen] = useState(false);
 
   const getInvoices = async () => {
     const querySnapshot = await getDocs(
@@ -36,7 +38,11 @@ const Home = () => {
         <meta name="description" content="Available invoices" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Toolbar setFormIsOpen={setFormIsOpen} invoices={invoices} />
+      <Toolbar
+        setFormIsOpen={setFormIsOpen}
+        invoices={invoices}
+        setLoginIsOpen={setLoginIsOpen}
+      />
       {currentUser ? (
         <div className={styles.container}>
           {invoices.length > 0 ? (
@@ -76,6 +82,7 @@ const Home = () => {
           </p>
         </div>
       )}
+      <SignIn isOpen={loginIsOpen} setIsOpen={setLoginIsOpen} />
     </>
   );
 };

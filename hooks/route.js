@@ -23,6 +23,6 @@ export function withProtected(Component) {
       router.replace("/login");
       return <h2>Loading...</h2>;
     }
-    return <Component auth={auth} {...props} />;
+    return <Component auth={auth} {...props} setLogin={true} />;
   };
 }

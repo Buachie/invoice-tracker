@@ -1,7 +1,18 @@
 import React from "react";
 import styles from "./Toolbar.module.scss";
+import { useAuth } from "../../contexts/AuthenticationContext";
 
-const Toolbar = ({ invoices, setFormIsOpen }) => {
+const Toolbar = ({ invoices, setFormIsOpen, setLoginIsOpen }) => {
+  const { currentUser } = useAuth();
+
+  const detectUserPermission = () => {
+    if (currentUser) {
+      setFormIsOpen(true);
+    } else {
+      setLoginIsOpen(true);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.invoiceData}>
@@ -17,7 +28,7 @@ const Toolbar = ({ invoices, setFormIsOpen }) => {
         <button
           className={styles.addInvoice}
           type="button"
-          onClick={() => setFormIsOpen(true)}
+          onClick={detectUserPermission}
         >
           New Invoice
         </button>

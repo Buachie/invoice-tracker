@@ -7,6 +7,7 @@ import { addDoc, collection } from "firebase/firestore";
 import InvoiceFields from "./InvoiceFields";
 import styles from "./Form.module.scss";
 import { createInvoice } from "../../utilities/Form";
+import { AnimatePresence } from "framer-motion";
 
 const CreateInvoice = ({ setIsOpen, isOpen }) => {
   const { currentUser } = useAuth();
@@ -26,7 +27,7 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
   };
 
   return (
-    <>
+    <AnimatePresence>
       {isOpen && (
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {(formik) => (
@@ -47,7 +48,7 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
           )}
         </Formik>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 
