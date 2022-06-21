@@ -1,16 +1,60 @@
-import styles from "./InvoiceItems.module.scss";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  background-color: #f9fafe;
+  grid-column: 1/4;
+  border-radius: 15px;
+`;
+
+const StyledTable = styled.table`
+  padding: 1em;
+  width: 100%;
+
+  th {
+    color: #7e88c3;
+    font-size: 0.8em;
+    text-align: right;
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  td {
+    text-align: right;
+    font-weight: bold;
+    &:first-child {
+      text-align: left;
+    }
+    &:nth-child(2) {
+      color: #7e88c3;
+    }
+    &:nth-child(3) {
+      color: #7e88c3;
+    }
+  }
+`;
+
+const Total = styled.div`
+  background-color: #373b53;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border-radius: 0 0 15px 15px;
+`;
 
 const InvoiceItems = ({ items, total }) => {
   // console.log(items);
   return (
-    <div className={styles.container}>
-      <table className={styles.tbody}>
+    <Wrapper>
+      <StyledTable>
         <thead>
           <tr>
-            <th className={styles.header}>Item Name</th>
-            <th className={styles.header}>QTY.</th>
-            <th className={styles.header}>Price</th>
-            <th className={styles.header}>Total</th>
+            <th>Item Name</th>
+            <th>QTY.</th>
+            <th>Price</th>
+            <th>Total</th>
           </tr>
         </thead>
 
@@ -18,20 +62,20 @@ const InvoiceItems = ({ items, total }) => {
           {items.map((item) => {
             return (
               <tr>
-                <td className={styles.data}>{item.name}</td>
-                <td className={styles.data}>{item.qty}</td>
-                <td className={styles.data}>${item.price}</td>
-                <td className={styles.data}>${item.total}</td>
+                <td>{item.name}</td>
+                <td>{item.qty}</td>
+                <td>${item.price}</td>
+                <td>${item.total}</td>
               </tr>
             );
           })}
         </tbody>
-      </table>
-      <div className={styles.footer}>
+      </StyledTable>
+      <Total>
         <p>Amount Due</p>
         <h2>${total}</h2>
-      </div>
-    </div>
+      </Total>
+    </Wrapper>
   );
 };
 

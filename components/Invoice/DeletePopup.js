@@ -1,13 +1,38 @@
 import React from "react";
 import Backdrop from "../form/Backdrop";
 import { deleteInvoice } from "../Utilities/Invoice";
-import styles from "./Popup.module.scss";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 
+const Wrapper = styled.div`
+  max-width: 500px;
+  width: 100%;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+const StyledButton = styled.button`
+  border: none;
+  padding: 1em;
+  border-radius: 24px;
+  font-weight: bold;
+  &:hover {
+    cursor: pointer;
+  }
+  &.delete {
+    background-color: red;
+    color: #fff;
+  }
+`;
 const DeletePopup = ({ invoiceId, isOpen, setIsOpen }) => {
   const { currentUser } = useAuth();
   const router = useRouter();
+
   const confirmDelete = () => {
     deleteInvoice(invoiceId, currentUser);
     router.replace("/");
@@ -17,29 +42,29 @@ const DeletePopup = ({ invoiceId, isOpen, setIsOpen }) => {
     <>
       {isOpen && (
         <Backdrop setIsOpen={setIsOpen}>
-          <div className={styles.container}>
+          <Wrapper>
             <h2>Confirm Deletion</h2>
             <p>
               Are you sure you want to delete invoice #{invoiceId}? This action
               cannot be undone.
             </p>
-            <div className={styles.buttonContainer}>
-              <button
-                className={styles.cancel}
+            <div>
+              <StyledButton
+                className="cancel"
                 type="button"
                 onClick={() => setIsOpen(false)}
               >
                 Cancel
-              </button>
-              <button
-                className={styles.delete}
+              </StyledButton>
+              <StyledButton
+                className="delete"
                 type="button"
                 onClick={confirmDelete}
               >
                 Delete
-              </button>
+              </StyledButton>
             </div>
-          </div>
+          </Wrapper>
         </Backdrop>
       )}
     </>

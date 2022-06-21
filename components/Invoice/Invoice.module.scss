@@ -84,3 +84,181 @@
         }
     }
 }
+
+.lightText{
+    color: $sub-font-color;
+    font-size: 0.8em;
+}
+.container{
+    width: 100%;
+    max-width: $component-width;
+    padding: 1em;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    background-color: #fff;
+}
+
+.invoiceHead{
+    grid-row: 1/2;
+    grid-column: 1/5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .fromAddress{
+        grid-column: 2/3;
+        text-align: right;
+        @include md{
+            grid-column: 1/2;
+            text-align: left;
+        }
+    }
+}
+
+.invoiceData{
+    grid-row: 2/2;
+    grid-column: 1/5;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.footer{
+        display: none;
+        gap: 1em;
+        background-color: #fff;
+        width: 100vw;
+        padding: 1em;
+        @include sm {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        //General Button Styles
+        &>*{
+            border-radius: 20px;
+            border: none;
+            padding: 1em;
+            font-weight: bold;
+        }
+        .edit{
+            background-color: #F9FAFE;
+            color: #7E88C3;
+        }
+        .delete {
+            background-color: #EC5757;
+            color: #fff;
+        }
+
+        .markPaid {
+            background-color: #7C5DFA;
+            color: #fff;
+        }
+    }
+
+        .nav{
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+        align-self: flex-start;
+    }
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: $component-width;
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 20px;
+    .status{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1em;
+        @include sm {
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+
+    .options{
+        display: flex;
+        gap: 1em;
+        @include sm {
+            display: none;
+        }
+        //General Button Styles
+        &>*{
+            border-radius: 20px;
+            border: none;
+            padding: 1em;
+            font-weight: bold;
+        }
+        .edit{
+            background-color: #F9FAFE;
+            color: #7E88C3;
+        }
+        .delete {
+            background-color: #EC5757;
+            color: #fff;
+        }
+
+        .markPaid {
+            background-color: #7C5DFA;
+            color: #fff;
+        }
+    }
+}
+.back{
+    align-self: flex-start;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.invoiceItems {
+    //min-width: 100%;
+    // padding: 1em;
+    background-color: #F9FAFE;
+    grid-column: 1/4;
+    border-radius: 15px;
+    .header {
+    color: $sub-font-color;
+    font-size: 0.8em;
+    text-align: right;
+    &:first-child{
+        text-align: left;
+    }
+}
+.tbody {
+    padding: 1em;
+    width: 100%;
+}
+.data{
+    text-align: right;
+    font-weight: bold;
+    &:first-child{
+        text-align: left;
+    }
+    &:nth-child(2){
+        color: $sub-font-color;
+    }
+    &:nth-child(3){
+        color: $sub-font-color;
+    }
+}
+
+.footer {
+    background-color: #373B53;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    border-radius: 0 0 15px 15px;
+}
+}

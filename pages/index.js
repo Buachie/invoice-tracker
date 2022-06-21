@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Invoice from "../components/Invoice/Invoice";
 import { useAuth } from "../contexts/AuthenticationContext";
 import { storage } from "./api/firebaseconfig";
 import { collection, getDocs } from "firebase/firestore";
@@ -8,12 +7,16 @@ import styles from "../styles/Home.module.scss";
 import CreateInvoice from "../components/form/CreateInvoice";
 import Toolbar from "../components/toolbar/Toolbar";
 import SignIn from "../components/Authentication/SignIn";
+import InvoiceList from "../components/Invoice/InvoiceList";
+import { AnimatePresence } from "framer-motion";
 
 const Home = () => {
   const { currentUser } = useAuth();
   const [invoices, setInvoices] = useState([]);
   const [formIsOpen, setFormIsOpen] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
+  const [filter, setFilter] = useState(null);
+  const [filteredInvoices, setFilteredInvoices] = useState(null);
 
   const getInvoices = async () => {
     const querySnapshot = await getDocs(
@@ -25,11 +28,22 @@ const Home = () => {
       })
     );
   };
+
   useEffect(() => {
     currentUser ? getInvoices() : "";
   }, [currentUser]);
 
-  console.log(invoices);
+  useEffect(() => {
+    setFilteredInvoices(invoices);
+
+    if (invoices && filter) {
+      setFilteredInvoices(
+        invoices.filter((invoice) => {
+          return invoice.status === filter;
+        })
+      );
+    }
+  }, [invoices, filter]);
 
   return (
     <>
@@ -38,51 +52,34 @@ const Home = () => {
         <meta name="description" content="Available invoices" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Toolbar
-        setFormIsOpen={setFormIsOpen}
-        invoices={invoices}
-        setLoginIsOpen={setLoginIsOpen}
-      />
-      {currentUser ? (
-        <div className={styles.container}>
-          {invoices.length > 0 ? (
-            invoices.map((invoice, key) => {
-              return (
-                <Invoice
-                  key={key}
-                  invoiceId={invoice.id}
-                  paymentDue={invoice.paymentDue}
-                  clientName={invoice.clientName}
-                  total={invoice.total}
-                  status={invoice.status}
-                />
-              );
-            })
-          ) : (
-            <div className={styles.noInvoices}>
-              <img src="/illustration-empty.svg" />
-              <h1>There is nothing here</h1>
-              <p>
-                Create an invoice by clicking the <br />
-                <span className={styles.bold}>New Invoice</span> button and get
-                started
-              </p>
-            </div>
-          )}
-          <CreateInvoice isOpen={formIsOpen} setIsOpen={setFormIsOpen} />
-        </div>
-      ) : (
-        <div className={styles.noInvoices}>
-          <img src="/illustration-empty.svg" />
-          <h1>There is nothing here</h1>
-          <p>
-            Create an invoice by clicking the <br />
-            <span className={styles.bold}>New Invoice</span> button and sign in
-            to get started
-          </p>
-        </div>
-      )}
-      <SignIn isOpen={loginIsOpen} setIsOpen={setLoginIsOpen} />
+      <AnimatePresence>
+        <Toolbar
+          setFormIsOpen={setFormIsOpen}
+          invoices={invoices}
+          filter={filter}
+          setFilter={setFilter}
+          setLoginIsOpen={setLoginIsOpen}
+        />
+        {currentUser && (
+          <div className={styles.container}>
+            {invoices.length > 0 ? (
+              <InvoiceList invoices={filteredInvoices} />
+            ) : (
+              <div className={styles.noInvoices}>
+                <img src="/illustration-empty.svg" />
+                <h1>There is nothing here</h1>
+                <p>
+                  Create an invoice by clicking the <br />
+                  <span className={styles.bold}>New Invoice</span> button and
+                  get started
+                </p>
+              </div>
+            )}
+            <CreateInvoice isOpen={formIsOpen} setIsOpen={setFormIsOpen} />
+          </div>
+        )}
+        <SignIn isOpen={loginIsOpen} setIsOpen={setLoginIsOpen} />
+      </AnimatePresence>
     </>
   );
 };
