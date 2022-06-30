@@ -1,8 +1,36 @@
-import { forwardRef, useRef, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthenticationContext";
-import { motion } from "framer-motion";
-import styles from "./Navbar.module.scss";
+import { useRef, useEffect } from "react";
+import styled from "styled-components";
 
+const Wrapper = styled.div`
+  background-color: #fff;
+  padding: 0.5em;
+  border-radius: 15px;
+  position: absolute;
+  top: -100%;
+  left: 60%;
+  @media (max-width: 768px) {
+    top: 70%;
+    left: -60%;
+  }
+`;
+
+const NavContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledButton = styled.button`
+  margin: 0.5em;
+  padding: 1em;
+  border: none;
+  border-radius: 10px;
+  &:hover {
+    transition: 0.3s ease-in-out;
+    background-color: $primary-color;
+    color: #fff;
+  }
+`;
 const NavMenu = ({ isOpen, setIsOpen, setLoginIsOpen, setRegisterIsOpen }) => {
   const { currentUser, logout } = useAuth();
   const menu = useRef();
@@ -29,18 +57,18 @@ const NavMenu = ({ isOpen, setIsOpen, setLoginIsOpen, setRegisterIsOpen }) => {
   return (
     <>
       {isOpen && (
-        <div className={styles.container} ref={menu}>
+        <Wrapper ref={menu}>
           {currentUser ? (
-            <div className={styles.navItems}>
-              <button onClick={logout}>Sign Out</button>
-            </div>
+            <NavContent>
+              <StyledButton onClick={logout}>Sign Out</StyledButton>
+            </NavContent>
           ) : (
-            <div className={styles.navItems}>
-              <button onClick={openLogin}>Login</button>
-              <button onClick={openSignUp}>Register</button>
-            </div>
+            <NavContent>
+              <StyledButton onClick={openLogin}>Login</StyledButton>
+              <StyledButton onClick={openSignUp}>Register</StyledButton>
+            </NavContent>
           )}
-        </div>
+        </Wrapper>
       )}
     </>
   );

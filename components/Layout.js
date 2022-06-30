@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Navbar from "./Navbar/Navbar";
-import styles from "./Layout.module.scss";
 import { AuthProvider } from "../contexts/AuthenticationContext";
 import SignIn from "./Authentication/SignIn";
 import SignUp from "./Authentication/SignUp";
