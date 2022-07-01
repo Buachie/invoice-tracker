@@ -4,7 +4,6 @@ import Form from "./Form";
 import { storage } from "../../pages/api/firebaseconfig";
 import { setDoc, doc } from "firebase/firestore";
 import { createInvoice } from "../../utilities/Form";
-import styles from "./Form.module.scss";
 import InvoiceFields from "./InvoiceFields";
 import { AnimatePresence } from "framer-motion";
 import styled from "styled-components";

@@ -1,7 +1,7 @@
 import React from "react";
 import { useField } from "formik";
-import styles from "./Form.module.scss";
 import styled from "styled-components";
+
 const Wrapper = styled.div`
   margin: 1em 0;
   width: 100%;

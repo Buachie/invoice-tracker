@@ -5,7 +5,6 @@ import { initialValues } from "./data";
 import { storage } from "../../pages/api/firebaseconfig";
 import { addDoc, collection } from "firebase/firestore";
 import InvoiceFields from "./InvoiceFields";
-import styles from "./Form.module.scss";
 import { createInvoice } from "../../utilities/Form";
 import { AnimatePresence } from "framer-motion";
 import { Button } from "../shared/Buttons";

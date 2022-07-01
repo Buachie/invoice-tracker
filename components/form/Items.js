@@ -1,12 +1,12 @@
 import Item from "./Item";
 import { FieldArray, useFormikContext } from "formik";
 import React from "react";
-import styles from "./Form.module.scss";
+import { AddItemButton } from "../shared/Buttons";
 
 const Items = ({ name }) => {
   const { values } = useFormikContext();
   return (
-    <div>
+    <>
       <FieldArray
         name={name}
         render={(helpers) => (
@@ -14,7 +14,7 @@ const Items = ({ name }) => {
             {values.items.map((item, index) => (
               <Item key={index} index={index} helpers={helpers} />
             ))}
-            <button
+            <AddItemButton
               type="button"
               onClick={() =>
                 helpers.push({
@@ -24,14 +24,11 @@ const Items = ({ name }) => {
                   total: 0,
                 })
               }
-              className={styles.addItem}
-            >
-              + Add New Item
-            </button>
+            />
           </div>
         )}
       />
-    </div>
+    </>
   );
 };
 
