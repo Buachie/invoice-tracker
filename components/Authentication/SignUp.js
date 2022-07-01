@@ -1,8 +1,45 @@
 import { Formik, Form, Field, ErrorMessage, Label } from "formik";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import Backdrop from "../form/Backdrop";
-import styles from "./Authentication.module.scss";
+import styled from "styled-components";
 
+const Wrapper = styled.div`
+  max-width: 400px;
+  width: 100%;
+  height: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  z-index: 1000;
+`
+
+const StyledForm = styled(Form)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 20px;
+`
+
+const StyledField = styled(Field)`
+  padding: 0.5em;
+  border-radius: 30px;
+  border: 1px solid #dfe3fa;
+`
+const SubmitButton = styled.button`
+  padding: 0.5em;
+  border-radius: 30px;
+  border: 1px solid #dfe3fa;
+  background-color: #7C5DFA;
+  color: #fff;
+  transition: 0.3s ease-out;
+  &:hover{
+    background-color: lighten(#7C5DFA, 5%);
+  }
+`
 const SignUp = ({ isOpen, setIsOpen }) => {
   const { signup } = useAuth();
   return (
@@ -10,7 +47,7 @@ const SignUp = ({ isOpen, setIsOpen }) => {
       {isOpen && (
         <>
           <Backdrop setIsOpen={setIsOpen} />
-          <div className={styles.container}>
+          <Wrapper>
             <Formik
               initialValues={{ email: "", password: "", confirmPassword: "" }}
               validate={(values) => {
@@ -33,43 +70,39 @@ const SignUp = ({ isOpen, setIsOpen }) => {
               }}
             >
               {({ isSubmitting }) => (
-                <Form className={styles.form}>
+                <StyledForm>
                   <h2>Sign Up</h2>
-                  <Field
+                  <StyledField
                     type="email"
                     name="email"
                     placeholder="Email"
                     autoComplete="email"
-                    className={styles.input}
                   />
                   <ErrorMessage name="email" component="div" />
-                  <Field
+                  <StyledField
                     type="password"
                     name="password"
                     placeholder="Password"
                     autoComplete="new-password"
-                    className={styles.input}
                   />
                   <ErrorMessage name="password" component="div" />
-                  <Field
+                  <StyledField
                     type="password"
                     name="confirmPassword"
                     placeholder="Confirm Password"
                     autoComplete="new-password"
-                    className={styles.input}
                   />
                   <ErrorMessage name="confirmPassword" component="div" />
-                  <button
-                    className={styles.submit}
+                  <SubmitButton
                     type="submit"
                     disabled={isSubmitting}
                   >
                     Sign Up
-                  </button>
-                </Form>
+                  </SubmitButton>
+                </StyledForm>
               )}
             </Formik>
-          </div>
+          </Wrapper>
         </>
       )}
     </>
