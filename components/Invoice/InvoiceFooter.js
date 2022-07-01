@@ -1,4 +1,3 @@
-import styles from "./Invoice.module.scss";
 import { markAsPaid } from "../Utilities/Invoice";
 import styled from "styled-components";
 

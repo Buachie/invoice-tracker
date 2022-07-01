@@ -1,8 +1,8 @@
-import styles from "./InvoiceHeader.module.scss";
-import { markAsPaid } from "../Utilities/Invoice";
-import Link from "next/link";
 import InvoiceStatus from "../shared/InvoiceStatus";
+import {Button} from '../shared/Buttons';
+import { markAsPaid } from "../Utilities/Invoice";
 import styled from "styled-components";
+import Link from "next/link";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -19,6 +19,13 @@ const Wrapper = styled.div`
   }
 `;
 
+const BackButton = styled.div`
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  align-self: flex-start;
+  cursor: pointer;
+`;
 const Status = styled.div`
   display: flex;
   flex-direction: row;
@@ -36,25 +43,6 @@ const ButtonWrapper = styled.div`
   @media (max-wdith: 400px) {
     display: none;
   }
-  & > * {
-    border-radius: 20px;
-    border: none;
-    padding: 1em;
-    font-weight: bold;
-  }
-  .edit {
-    background-color: #f9fafe;
-    color: #7e88c3;
-  }
-  .delete {
-    background-color: #ec5757;
-    color: #fff;
-  }
-
-  .markPaid {
-    background-color: #7c5dfa;
-    color: #fff;
-  }
 `;
 
 const InvoiceHeader = ({
@@ -66,34 +54,35 @@ const InvoiceHeader = ({
 }) => {
   return (
     <>
-      <div className={styles.nav}>
+      <BackButton>
         <Link href="/">
-          <div className={styles.back}>
+          <div>
             <img src="/icon-arrow-left.svg" alt="left-arrow" />
             <span> Go Back</span>
           </div>
         </Link>
-      </div>
+      </BackButton>
       <Wrapper>
         <Status>
           <span>Status</span>
           <InvoiceStatus status={status} />
         </Status>
         <ButtonWrapper>
-          <button className="edit" onClick={() => setFormIsOpen(true)}>
+          <Button background='#f9fafe' textColor='#7e88c3' onClick={() => setFormIsOpen(true)}>
             Edit
-          </button>
-          <button className="delete" onClick={() => setPopupIsOpen(true)}>
+          </Button>
+          <Button background='#ec5757' textColor='#fff' onClick={() => setPopupIsOpen(true)}>
             Delete
-          </button>
-          {status == "Pending" ? (
-            <button
+          </Button>
+          {status == "Pending" && (
+            <Button
+              background='#7c5dfa'
+              textColor='#fff'
               onClick={() => markAsPaid(id, currentUser)}
-              className="markPaid"
             >
               Mark as Paid
-            </button>
-          ) : null}
+            </Button>
+          )}
         </ButtonWrapper>
       </Wrapper>
     </>

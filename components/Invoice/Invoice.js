@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import InvoiceStatus from "../shared/InvoiceStatus";
-import styles from "./Invoice.module.scss";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 

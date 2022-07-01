@@ -3,12 +3,26 @@ import Head from "next/head";
 import { useAuth } from "../contexts/AuthenticationContext";
 import { storage } from "./api/firebaseconfig";
 import { collection, getDocs } from "firebase/firestore";
-import styles from "../styles/Home.module.scss";
 import CreateInvoice from "../components/form/CreateInvoice";
 import Toolbar from "../components/toolbar/Toolbar";
 import SignIn from "../components/Authentication/SignIn";
 import InvoiceList from "../components/Invoice/InvoiceList";
 import { AnimatePresence } from "framer-motion";
+import styled from "styled-components";
+import NoInvoices from "../components/Invoice/NoInvoices";
+
+const Wrapper = styled.div`
+  padding: 0 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5em;
+  @media screen and (max-width: 768px) {
+    padding: 0 0.5em;
+  }
+`;
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -60,23 +74,17 @@ const Home = () => {
           setFilter={setFilter}
           setLoginIsOpen={setLoginIsOpen}
         />
-        {currentUser && (
-          <div className={styles.container}>
+        {currentUser ? (
+          <Wrapper>
             {invoices.length > 0 ? (
               <InvoiceList invoices={filteredInvoices} />
             ) : (
-              <div className={styles.noInvoices}>
-                <img src="/illustration-empty.svg" />
-                <h1>There is nothing here</h1>
-                <p>
-                  Create an invoice by clicking the <br />
-                  <span className={styles.bold}>New Invoice</span> button and
-                  get started
-                </p>
-              </div>
+              <NoInvoices />
             )}
             <CreateInvoice isOpen={formIsOpen} setIsOpen={setFormIsOpen} />
-          </div>
+          </Wrapper>
+        ) : (
+          <NoInvoices />
         )}
         <SignIn isOpen={loginIsOpen} setIsOpen={setLoginIsOpen} />
       </AnimatePresence>
