@@ -7,6 +7,15 @@ import { createInvoice } from "../../utilities/Form";
 import styles from "./Form.module.scss";
 import InvoiceFields from "./InvoiceFields";
 import { AnimatePresence } from "framer-motion";
+import styled from "styled-components";
+import { Button } from "../shared/Buttons";
+
+const ButtonWrapper = styled.div`
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+`
 
 const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
   const { currentUser } = useAuth();
@@ -41,14 +50,14 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
             <Form setIsOpen={setIsOpen}>
               <InvoiceFields title={"Edit Invoice"} />
 
-              <div className={styles.buttonContainer}>
-                <button type="button" onClick={() => setIsOpen(false)}>
+              <ButtonWrapper>
+                <Button  background='#f0f0f0' textColor='#000' type="button" onClick={() => setIsOpen(false)}>
                   Discard
-                </button>
-                <button className={styles.submit} type="submit">
+                </Button>
+                <Button background='#7c5dfa' textColor='#fff'type="submit">
                   Update Invoice
-                </button>
-              </div>
+                </Button>
+              </ButtonWrapper>
             </Form>
           )}
         </Formik>

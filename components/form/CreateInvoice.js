@@ -43,8 +43,8 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
             <Form setIsOpen={setIsOpen}>
               <InvoiceFields />
               <ButtonWrapper>
-                <Button background='f0f0f0' textColor='#000' type='button' onClick={()=>setIsOpen(false)}>Discard</Button>
-                <Button background='f0f0f0' textColor='#000' type='button' onClick={()=> addDraft(formik.values)}>Save Draft</Button>
+                <Button background='#f0f0f0' textColor='#000' type='button' onClick={()=>setIsOpen(false)}>Discard</Button>
+                <Button background='#f0f0f0' textColor='#000' type='button' onClick={()=> addDraft(formik.values)}>Save Draft</Button>
                 <Button background='#7c5dfa' textColor='#fff' type='submit'>Save &amp; Send</Button>
                 {/* <button type="button" onClick={() => setIsOpen(false)}>
                   Discard
