@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  font-weight: bold;
   padding: 1em;
   border-radius: 6px;
   width: fit-content;

@@ -3,6 +3,13 @@ import InvoiceStatus from "../shared/InvoiceStatus";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+const animation = {
+  hidden: { opacity: 0 },
+  visible: {
+    transition: { opacity: 1 },
+  },
+};
+
 const Wrapper = styled(motion.div)`
   text-decoration: none;
   background-color: #fff;
@@ -38,11 +45,12 @@ const InvoiceID = styled.div`
     text-align: left;
   }
 `;
+
 const DueDate = styled.div`
   color: #7e88c3;
   grid-column: 2/3;
   grid-row: 1/2;
-  @media (max-wdith: 768px) {
+  @media (max-width: 768px) {
     grid-column: 1/2;
     grid-row: 2/3;
     text-align: left;
@@ -77,7 +85,12 @@ const Invoice = ({ id, paymentDue, clientName, total, status }) => {
   };
 
   return (
-    <Wrapper onClick={showFullInvoiceHandler}>
+    <Wrapper
+      onClick={showFullInvoiceHandler}
+      variants={animation}
+      // initial="hidden"
+      animate="visible"
+    >
       <InvoiceID>
         <span>#</span>
         {id.substring(0, 5)}

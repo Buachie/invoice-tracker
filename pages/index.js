@@ -66,7 +66,7 @@ const Home = () => {
         <meta name="description" content="Available invoices" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AnimatePresence>
+      <AnimatePresence key="homepage">
         <Toolbar
           setFormIsOpen={setFormIsOpen}
           invoices={invoices}

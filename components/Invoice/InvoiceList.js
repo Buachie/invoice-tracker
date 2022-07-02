@@ -1,12 +1,13 @@
 import Invoice from "./Invoice";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 const animation = {
-  hidden: {},
+  hidden: { opacity: 0 },
   visible: {
-    transition: { staggerChildren: 0.15 },
+    opacity: 1,
   },
+  transition: { staggerChildren: 0.15 },
 };
 
 const Wrapper = styled(motion.div)`
@@ -19,9 +20,9 @@ const Wrapper = styled(motion.div)`
 `;
 const InvoiceList = ({ invoices }) => {
   return (
-    <AnimatePresence>
+    <>
       {invoices && (
-        <Wrapper variants={animation} initial="hidden" animate="visible">
+        <Wrapper variants={animation} animate="visible">
           {invoices.map((invoice) => {
             return (
               <Invoice
@@ -36,7 +37,7 @@ const InvoiceList = ({ invoices }) => {
           })}
         </Wrapper>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 

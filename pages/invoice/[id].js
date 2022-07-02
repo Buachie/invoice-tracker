@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { storage } from "../api/firebaseconfig";
 import { getDoc, doc } from "firebase/firestore";
@@ -26,9 +25,9 @@ const InvoiceSummary = () => {
     );
     if (invoiceSnap.exists()) {
       setError("");
-      console.log("Document data: ", invoiceSnap.data());
+      // console.log("Document data: ", invoiceSnap.data());
       setInvoice(invoiceSnap.data());
-      console.log("Invoice: ", invoice);
+      // console.log("Invoice: ", invoice);
     } else {
       setError("Invoice Not Found");
     }

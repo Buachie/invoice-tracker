@@ -14,7 +14,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1em;
-`
+`;
 
 const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
   const { currentUser } = useAuth();
@@ -30,7 +30,7 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence key="edit-invoice">
       {isOpen && (
         <Formik
           initialValues={{
@@ -50,10 +50,15 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
               <InvoiceFields title={"Edit Invoice"} />
 
               <ButtonWrapper>
-                <Button  background='#f0f0f0' textColor='#000' type="button" onClick={() => setIsOpen(false)}>
+                <Button
+                  background="#f0f0f0"
+                  textColor="#000"
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                >
                   Discard
                 </Button>
-                <Button background='#7c5dfa' textColor='#fff'type="submit">
+                <Button background="#7c5dfa" textColor="#fff" type="submit">
                   Update Invoice
                 </Button>
               </ButtonWrapper>

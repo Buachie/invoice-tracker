@@ -26,7 +26,7 @@ const Wrapper = styled(motion.div)`
     padding: 1em;
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 420px) {
     width: 100%;
     height: auto;
     border-radius: 0;
@@ -48,9 +48,9 @@ const Form = ({ setIsOpen, children }) => {
       <Backdrop setIsOpen={setIsOpen} />
       <Wrapper
         variants={animation}
-        initial='hidden'
-        animate='visible'
-        exit='hidden'
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
       >
         <FormikForm>{children}</FormikForm>
       </Wrapper>

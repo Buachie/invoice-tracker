@@ -15,7 +15,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1em;
-`
+`;
 
 const CreateInvoice = ({ setIsOpen, isOpen }) => {
   const { currentUser } = useAuth();
@@ -35,16 +35,32 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence key="create-invoice">
       {isOpen && (
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {(formik) => (
             <Form setIsOpen={setIsOpen}>
               <InvoiceFields />
               <ButtonWrapper>
-                <Button background='#f0f0f0' textColor='#000' type='button' onClick={()=>setIsOpen(false)}>Discard</Button>
-                <Button background='#f0f0f0' textColor='#000' type='button' onClick={()=> addDraft(formik.values)}>Save Draft</Button>
-                <Button background='#7c5dfa' textColor='#fff' type='submit'>Save &amp; Send</Button>
+                <Button
+                  background="#f0f0f0"
+                  textColor="#000"
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Discard
+                </Button>
+                <Button
+                  background="#f0f0f0"
+                  textColor="#000"
+                  type="button"
+                  onClick={() => addDraft(formik.values)}
+                >
+                  Save Draft
+                </Button>
+                <Button background="#7c5dfa" textColor="#fff" type="submit">
+                  Save &amp; Send
+                </Button>
                 {/* <button type="button" onClick={() => setIsOpen(false)}>
                   Discard
                 </button>

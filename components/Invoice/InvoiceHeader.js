@@ -1,5 +1,5 @@
 import InvoiceStatus from "../shared/InvoiceStatus";
-import {Button} from '../shared/Buttons';
+import { Button } from "../shared/Buttons";
 import { markAsPaid } from "../Utilities/Invoice";
 import styled from "styled-components";
 import Link from "next/link";
@@ -25,6 +25,9 @@ const BackButton = styled.div`
   margin: 0 auto;
   align-self: flex-start;
   cursor: pointer;
+  &:hover {
+    color: gray;
+  }
 `;
 const Status = styled.div`
   display: flex;
@@ -68,16 +71,24 @@ const InvoiceHeader = ({
           <InvoiceStatus status={status} />
         </Status>
         <ButtonWrapper>
-          <Button background='#f9fafe' textColor='#7e88c3' onClick={() => setFormIsOpen(true)}>
+          <Button
+            background="#f9fafe"
+            textColor="#7e88c3"
+            onClick={() => setFormIsOpen(true)}
+          >
             Edit
           </Button>
-          <Button background='#ec5757' textColor='#fff' onClick={() => setPopupIsOpen(true)}>
+          <Button
+            background="#ec5757"
+            textColor="#fff"
+            onClick={() => setPopupIsOpen(true)}
+          >
             Delete
           </Button>
           {status == "Pending" && (
             <Button
-              background='#7c5dfa'
-              textColor='#fff'
+              background="#7c5dfa"
+              textColor="#fff"
               onClick={() => markAsPaid(id, currentUser)}
             >
               Mark as Paid

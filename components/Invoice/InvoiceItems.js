@@ -42,6 +42,10 @@ const Total = styled.div`
   align-items: center;
   padding: 1em;
   border-radius: 0 0 15px 15px;
+  p {
+    font-weight: bold;
+    font-size: 1em;
+  }
 `;
 
 const InvoiceItems = ({ items, total }) => {
