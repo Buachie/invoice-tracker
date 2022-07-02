@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const BackButton = styled.div`
+const BackButton = styled(Link)`
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
@@ -57,13 +57,11 @@ const InvoiceHeader = ({
 }) => {
   return (
     <>
-      <BackButton>
-        <Link href="/">
-          <div>
-            <img src="/icon-arrow-left.svg" alt="left-arrow" />
-            <span> Go Back</span>
-          </div>
-        </Link>
+      <BackButton href="/">
+        <div>
+          <img src="/icon-arrow-left.svg" alt="left-arrow" />
+          <span> Go Back</span>
+        </div>
       </BackButton>
       <Wrapper>
         <Status>

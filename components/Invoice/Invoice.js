@@ -10,10 +10,12 @@ const animation = {
   },
 };
 
-const Wrapper = styled(motion.div)`
+const Wrapper = styled(motion.button)`
+  font-size: 1em;
   text-decoration: none;
   background-color: #fff;
   padding: 1em;
+  border: none;
   border-radius: 8px;
   width: 100%;
   display: grid;
@@ -21,6 +23,7 @@ const Wrapper = styled(motion.div)`
   grid-template-rows: min-content;
   align-items: center;
   gap: 1em;
+  cursor: pointer;
   @media (max-width: 768px) {
     grid-template-columns: auto;
   }
@@ -88,7 +91,6 @@ const Invoice = ({ id, paymentDue, clientName, total, status }) => {
     <Wrapper
       onClick={showFullInvoiceHandler}
       variants={animation}
-      // initial="hidden"
       animate="visible"
     >
       <InvoiceID>
