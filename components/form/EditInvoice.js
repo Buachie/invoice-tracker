@@ -8,6 +8,7 @@ import InvoiceFields from "./InvoiceFields";
 import { AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { Button } from "../shared/Buttons";
+import { validationSchema } from "./data";
 
 const ButtonWrapper = styled.div`
   padding: 1em;
@@ -43,6 +44,7 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
             projectDescription: invoice.projectDescription,
             items: invoice.items,
           }}
+          validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
           {(formik) => (

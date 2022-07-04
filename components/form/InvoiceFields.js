@@ -3,23 +3,35 @@ import DateSelect from "./DateSelect";
 import Items from "./Items";
 import Select from "./Select";
 import styled from "styled-components";
+import { useFormikContext } from "formik";
+import { displayErrors } from "../Utilities/Invoice";
 
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1em;
   flex: 1;
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     flex-direction: column;
   }
-`
+`;
+const Errors = styled.div`
+  margin-top: -1em;
+`;
+
+const Error = styled.div`
+  color: red;
+  font-weight: bold;
+`;
+const dropdownOptions = [
+  { name: "Net 1 Day", value: 1 },
+  { name: "Net 7 Days", value: 7 },
+  { name: "Net 14 Days", value: 14 },
+  { name: "Net 30 Days", value: 30 },
+];
+
 const InvoiceFields = ({ title }) => {
-  const dropdownOptions = [
-    { name: "Net 1 Day", value: 1 },
-    { name: "Net 7 Days", value: 7 },
-    { name: "Net 14 Days", value: 14 },
-    { name: "Net 30 Days", value: 30 },
-  ];
+  const formik = useFormikContext();
 
   return (
     <>
@@ -54,6 +66,13 @@ const InvoiceFields = ({ title }) => {
 
       <h4>Item List</h4>
       <Items name="items" />
+      {formik.submitCount > 0 && formik.errors && (
+        <Errors>
+          {displayErrors(formik.errors).map((item, index) => {
+            <Error key={index}>{item}</Error>;
+          })}
+        </Errors>
+      )}
     </>
   );
 };

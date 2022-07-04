@@ -1,3 +1,4 @@
+import { yupToFormErrors } from "formik";
 import * as Yup from "yup";
 
 export const initialValues = {
@@ -45,4 +46,14 @@ export const validationSchema = Yup.object().shape({
     postCode: Yup.string().required("All fields must be filled"),
     country: Yup.string().required("All fields must be filled"),
   }),
+  items: Yup.array()
+    .of(
+      Yup.object().shape({
+        name: Yup.string().required("Plase enter a valid name for the item"),
+        qty: Yup.number().min(1),
+        price: Yup.number().min(1),
+        total: Yup.number(),
+      })
+    )
+    .min(1, "There must be atleast one item"),
 });

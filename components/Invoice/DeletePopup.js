@@ -15,6 +15,10 @@ const Wrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  .bold {
+    font-weight: bold;
+  }
 `;
 const StyledButton = styled.button`
   border: none;
@@ -45,8 +49,9 @@ const DeletePopup = ({ invoiceId, isOpen, setIsOpen }) => {
           <Wrapper>
             <h2>Confirm Deletion</h2>
             <p>
-              Are you sure you want to delete invoice #{invoiceId}? This action
-              cannot be undone.
+              Are you sure you want to delete invoice{" "}
+              <span className="bold">#{invoiceId.substring(0, 5)}</span>? This
+              action cannot be undone.
             </p>
             <div>
               <StyledButton

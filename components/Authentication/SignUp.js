@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   left: 50%;
   transform: translate(-40%, -50%);
   z-index: 1000;
-`
+`;
 
 const StyledForm = styled(Form)`
   width: 100%;
@@ -22,24 +22,24 @@ const StyledForm = styled(Form)`
   background-color: #fff;
   padding: 1em;
   border-radius: 20px;
-`
+`;
 
 const StyledField = styled(Field)`
   padding: 0.5em;
   border-radius: 30px;
   border: 1px solid #dfe3fa;
-`
+`;
 const SubmitButton = styled.button`
   padding: 0.5em;
   border-radius: 30px;
   border: 1px solid #dfe3fa;
-  background-color: #7C5DFA;
+  background-color: #7c5dfa;
   color: #fff;
   transition: 0.3s ease-out;
-  &:hover{
-    background-color: lighten(#7C5DFA, 5%);
+  &:hover {
+    background-color: lighten(#7c5dfa, 5%);
   }
-`
+`;
 const SignUp = ({ isOpen, setIsOpen }) => {
   const { signup } = useAuth();
   return (
@@ -65,8 +65,14 @@ const SignUp = ({ isOpen, setIsOpen }) => {
                 return errors;
               }}
               onSubmit={async (values, { setSubmitting }) => {
-                await signup(values.email, values.password);
-                setSubmitting(false);
+                try {
+                  await signup(values.email, values.password).then(() => {
+                    setIsOpen(false);
+                  });
+                  setSubmitting(false);
+                } catch (error) {
+                  return error;
+                }
               }}
             >
               {({ isSubmitting }) => (
@@ -93,10 +99,7 @@ const SignUp = ({ isOpen, setIsOpen }) => {
                     autoComplete="new-password"
                   />
                   <ErrorMessage name="confirmPassword" component="div" />
-                  <SubmitButton
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
+                  <SubmitButton type="submit" disabled={isSubmitting}>
                     Sign Up
                   </SubmitButton>
                 </StyledForm>

@@ -1,7 +1,7 @@
 import { useAuth } from "../../contexts/AuthenticationContext";
 import { Formik } from "formik";
 import Form from "./Form";
-import { initialValues } from "./data";
+import { initialValues, validationSchema } from "./data";
 import { storage } from "../../pages/api/firebaseconfig";
 import { addDoc, collection } from "firebase/firestore";
 import InvoiceFields from "./InvoiceFields";
@@ -37,7 +37,11 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
   return (
     <AnimatePresence key="create-invoice">
       {isOpen && (
-        <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
           {(formik) => (
             <Form setIsOpen={setIsOpen}>
               <InvoiceFields />
