@@ -70,7 +70,7 @@ const Home = () => {
         <Toolbar
           setFormIsOpen={setFormIsOpen}
           invoices={invoices}
-          filter={filter}
+          filter={filteredInvoices}
           setFilter={setFilter}
           setLoginIsOpen={setLoginIsOpen}
         />

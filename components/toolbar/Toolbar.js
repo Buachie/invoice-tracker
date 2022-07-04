@@ -61,14 +61,14 @@ const Toolbar = ({
       setLoginIsOpen(true);
     }
   };
-
+  console.log(invoices);
   return (
     <Wrapper>
       <div className="invoiceData">
         <h1>Invoices</h1>
         <p>
           {invoices.length > 0
-            ? `There are ${invoices.length} total invoices`
+            ? `There are ${filter.length} total invoices`
             : "No Invoices"}
         </p>
       </div>

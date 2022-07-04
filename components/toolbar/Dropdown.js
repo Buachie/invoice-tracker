@@ -23,9 +23,9 @@ const Dropdown = ({ setFilter }) => {
   const dropdown = useRef();
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([
-    { id: 11, value: "Paid", checked: "false" },
-    { id: 21, value: "Pending", checked: "false" },
-    { id: 31, value: "Draft", checked: "false" },
+    { id: 11, value: "Paid", checked: false },
+    { id: 21, value: "Pending", checked: false },
+    { id: 31, value: "Draft", checked: false },
   ]);
 
   const handleClick = (id) => {
