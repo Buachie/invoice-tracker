@@ -61,7 +61,7 @@ const Toolbar = ({
       setLoginIsOpen(true);
     }
   };
-  console.log(invoices);
+  // console.log(invoices);
   return (
     <Wrapper>
       <div className="invoiceData">

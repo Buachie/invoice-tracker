@@ -1,16 +1,17 @@
-import { useRouter } from "next/router";
 import InvoiceStatus from "../shared/InvoiceStatus";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const animation = {
   hidden: { opacity: 0 },
   visible: {
-    transition: { opacity: 1 },
+    opacity: 1,
+    transition: { duration: 0.4 },
   },
 };
 
-const Wrapper = styled(motion.button)`
+const Wrapper = styled(motion.a)`
   font-size: 1em;
   text-decoration: none;
   background-color: #fff;
@@ -19,10 +20,10 @@ const Wrapper = styled(motion.button)`
   border-radius: 8px;
   width: 100%;
   display: grid;
-  grid-template-columns: 5rem 1fr 1fr min-content min-content min-content;
+  grid-template-columns: 5rem 10rem 1fr min-content min-content min-content;
   grid-template-rows: min-content;
   align-items: center;
-  gap: 1em;
+  gap: 0.8em;
   cursor: pointer;
   @media (max-width: 768px) {
     grid-template-columns: auto;
@@ -39,6 +40,7 @@ const Wrapper = styled(motion.button)`
 
 const InvoiceID = styled.div`
   font-weight: bold;
+  text-transform: uppercase;
   text span {
     font-weight: normal;
   }
@@ -61,6 +63,7 @@ const DueDate = styled.div`
 `;
 
 const ClientName = styled.div`
+  text-align: left;
   color: #7e88c3;
   grid-column: 3/4;
   grid-row: 1/2;
@@ -82,29 +85,28 @@ const Total = styled.div`
 `;
 
 const Invoice = ({ id, paymentDue, clientName, total, status }) => {
-  const router = useRouter();
-  const showFullInvoiceHandler = () => {
-    router.push("/invoice/" + id);
-  };
+  // const router = useRouter();/
 
   return (
-    <Wrapper
-      onClick={showFullInvoiceHandler}
-      variants={animation}
-      animate="visible"
-    >
-      <InvoiceID>
-        <span>#</span>
-        {id.substring(0, 5)}
-      </InvoiceID>
-      <DueDate>Due {paymentDue}</DueDate>
-      <ClientName>{clientName}</ClientName>
-      <Total>{`$${total}`}</Total>
-      <InvoiceStatus status={status} />
-      <div className="arrow">
-        <img src="/icon-arrow-right.svg" alt="" />
-      </div>
-    </Wrapper>
+    <Link href={`/invoice/${id}`} passHref={true} scroll={false}>
+      <Wrapper
+        // onClick={showFullInvoiceHandler}
+        variants={animation}
+        animate="visible"
+      >
+        <InvoiceID>
+          <span>#</span>
+          {id.substring(0, 5)}
+        </InvoiceID>
+        <DueDate>Due {paymentDue}</DueDate>
+        <ClientName>{clientName}</ClientName>
+        <Total>{`$${total}`}</Total>
+        <InvoiceStatus status={status} />
+        <div className="arrow">
+          <img src="/icon-arrow-right.svg" alt="" />
+        </div>
+      </Wrapper>
+    </Link>
   );
 };
 

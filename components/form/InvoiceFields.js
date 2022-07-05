@@ -32,11 +32,12 @@ const dropdownOptions = [
 
 const InvoiceFields = ({ title }) => {
   const formik = useFormikContext();
+  console.log(formik.errors);
+  console.log(displayErrors(formik.errors));
 
   return (
     <>
       <h2>{title}</h2>
-
       <h4>Bill From</h4>
       <Input label="Street Address" name="senderAddress.street" />
       <InputWrapper>
@@ -44,7 +45,6 @@ const InvoiceFields = ({ title }) => {
         <Input label="Post Code" name="senderAddress.postCode" />
         <Input label="Country" name="senderAddress.country" />
       </InputWrapper>
-
       <h4>Bill To</h4>
       <Input label="Client Name" name="clientName" />
       <Input label="Client Email" name="clientEmail" />
@@ -62,8 +62,7 @@ const InvoiceFields = ({ title }) => {
           options={dropdownOptions}
         />
       </InputWrapper>
-      <Input label="Project Description" name="projectDescription" />
-
+      <Input label="Project Description" name="description" />
       <h4>Item List</h4>
       <Items name="items" />
       {formik.submitCount > 0 && formik.errors && (

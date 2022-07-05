@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 
   .bold {
     font-weight: bold;
+    text-transform: uppercase;
   }
 `;
 const StyledButton = styled.button`

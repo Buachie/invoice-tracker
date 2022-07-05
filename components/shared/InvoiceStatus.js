@@ -3,7 +3,9 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   padding: 1em;
   border-radius: 6px;
-  width: fit-content;
+  width: 100px;
+  text-align: center;
+  font-weight: bold;
   background-color: ${(props) => {
     if (props.status === "Paid") return "#bbffe8";
     if (props.status === "Pending") return "#ffd8a6";

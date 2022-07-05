@@ -21,6 +21,9 @@ const StyledHead = styled.div`
   grid-column: 1/5;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  .invoiceId {
+    text-transform: uppercase;
+  }
 `;
 const Sender = styled.div`
   grid-column: 2/3;
@@ -46,7 +49,7 @@ const InvoiceBody = ({ invoice, invoiceId }) => {
     <Wrapper>
       <StyledHead>
         <div className="subject">
-          <h3>#{invoiceId.substring(0, 5)}</h3>
+          <h3 className="invoiceId">#{invoiceId.substring(0, 5)}</h3>
           <p>{invoice.projectDescription}</p>
         </div>
         <Sender>

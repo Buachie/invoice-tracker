@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 const animation = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
+    transition: { staggerChildren: 0.15 },
   },
-  transition: { staggerChildren: 0.15 },
 };
 
 const Wrapper = styled(motion.div)`
@@ -22,7 +21,7 @@ const InvoiceList = ({ invoices }) => {
   return (
     <>
       {invoices && (
-        <Wrapper variants={animation} animate="visible">
+        <Wrapper variants={animation} initial="hidden" animate="visible">
           {invoices.map((invoice) => {
             return (
               <Invoice

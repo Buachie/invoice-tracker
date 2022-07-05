@@ -21,17 +21,28 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
   const { currentUser } = useAuth();
 
   const onSubmit = async (values) => {
+    console.log(createInvoice("Pending", values));
     await addDoc(
       collection(storage, "users", currentUser.uid, "invoices"),
       createInvoice("Pending", values)
-    );
+    ).then(() => {
+      console.log("Invoice Created");
+      setIsOpen(false);
+    });
   };
 
   const addDraft = async (values) => {
-    await addDoc(
-      collection(storage, "users", currentUser.uid, "invoices"),
-      createInvoice("Draft", values)
-    );
+    try {
+      await addDoc(
+        collection(storage, "users", currentUser.uid, "invoices"),
+        createInvoice("Draft", values)
+      ).then(() => {
+        console.log("Invoice Created");
+        setIsOpen(false);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -71,9 +82,7 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
                 <button onClick={() => addDraft(formik.values)}>
                   Save Draft
                 </button>
-                <button className={styles.submit} type="submit">
-                  Save &amp; Send
-                </button> */}
+                <button type="submit">Save &amp; Send</button> */}
               </ButtonWrapper>
             </Form>
           )}
