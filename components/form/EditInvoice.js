@@ -27,6 +27,7 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, setInvoice, invoiceId }) => {
       { merge: true }
     ).then(() => {
       setIsOpen(false);
+      setInvoice();
     });
   };
 

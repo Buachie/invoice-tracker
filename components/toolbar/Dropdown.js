@@ -9,6 +9,11 @@ const Toggle = styled.button`
   border: none;
   background: transparent;
   position: relative;
+  @media screen and (max-width: 550px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 const Options = styled.div`
@@ -55,7 +60,10 @@ const Dropdown = ({ setFilter }) => {
   return (
     <div ref={dropdown} open={open}>
       <Toggle onClick={() => setOpen(!open)}>
-        <h3>Filter by status</h3> <img src="/icon-arrow-down.svg" alt="" />
+        <h3>
+          Filter <span>by status</span>
+        </h3>{" "}
+        <img src="/icon-arrow-down.svg" alt="" />
       </Toggle>
       {open && (
         <Options>

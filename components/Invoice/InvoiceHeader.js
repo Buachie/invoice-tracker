@@ -61,6 +61,7 @@ const InvoiceHeader = ({
   currentUser,
   setPopupIsOpen,
   setFormIsOpen,
+  setInvoices,
 }) => {
   return (
     <>
@@ -94,7 +95,10 @@ const InvoiceHeader = ({
             <Button
               background="#7c5dfa"
               textColor="#fff"
-              onClick={() => markAsPaid(id, currentUser)}
+              onClick={() => {
+                markAsPaid(id, currentUser);
+                setInvoices();
+              }}
             >
               Mark as Paid
             </Button>

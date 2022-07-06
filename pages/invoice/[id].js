@@ -53,6 +53,7 @@ const InvoiceSummary = () => {
           <InvoiceHeader
             setPopupIsOpen={setPopupIsOpen}
             setFormIsOpen={setFormIsOpen}
+            setInvoices={getInvoice}
             status={invoice.status}
             id={invoiceId}
             currentUser={currentUser}
@@ -74,6 +75,7 @@ const InvoiceSummary = () => {
         setIsOpen={setFormIsOpen}
         invoice={invoice}
         invoiceId={invoiceId}
+        setInvoice={getInvoice}
       />
     </>
   );

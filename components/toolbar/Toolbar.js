@@ -43,6 +43,11 @@ const AddInvoiceButton = styled.button`
     justify-content: center;
     border-radius: 50%;
   }
+  @media screen and (max-width: 550px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 const Toolbar = ({
@@ -78,7 +83,9 @@ const Toolbar = ({
           <div className="plusIcon">
             <img src="/icon-plus.svg" />
           </div>
-          New Invoice
+          <p>
+            New <span>Invoice</span>
+          </p>
         </AddInvoiceButton>
       </StyledTools>
     </Wrapper>
