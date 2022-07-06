@@ -63,9 +63,9 @@ const InvoiceItems = ({ items, total }) => {
         </thead>
 
         <tbody>
-          {items.map((item) => {
+          {items.map((item, key) => {
             return (
-              <tr>
+              <tr key={key}>
                 <td>{item.name}</td>
                 <td>{item.qty}</td>
                 <td>${item.price}</td>

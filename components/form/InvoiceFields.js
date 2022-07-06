@@ -19,7 +19,7 @@ const Errors = styled.div`
   margin-top: -1em;
 `;
 
-const Error = styled.div`
+const Error = styled.p`
   color: red;
   font-weight: bold;
 `;
@@ -32,7 +32,6 @@ const dropdownOptions = [
 
 const InvoiceFields = ({ title }) => {
   const formik = useFormikContext();
-  console.log(formik.errors);
   console.log(displayErrors(formik.errors));
 
   return (
@@ -67,8 +66,8 @@ const InvoiceFields = ({ title }) => {
       <Items name="items" />
       {formik.submitCount > 0 && formik.errors && (
         <Errors>
-          {displayErrors(formik.errors).map((item, index) => {
-            <Error key={index}>{item}</Error>;
+          {displayErrors(formik.errors).map((error, index) => {
+            return <Error key={index}>{error}</Error>;
           })}
         </Errors>
       )}

@@ -17,7 +17,7 @@ const ButtonWrapper = styled.div`
   gap: 1em;
 `;
 
-const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
+const EditInvoice = ({ setIsOpen, isOpen, invoice, setInvoice, invoiceId }) => {
   const { currentUser } = useAuth();
 
   const onSubmit = async (values) => {
@@ -41,7 +41,7 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, invoiceId }) => {
             clientAddress: invoice.clientAddress,
             createdAt: new Date(invoice.createdAt),
             paymentTerms: invoice.paymentTerms,
-            projectDescription: invoice.projectDescription,
+            description: invoice.description,
             items: invoice.items,
           }}
           validationSchema={validationSchema}

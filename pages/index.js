@@ -81,7 +81,11 @@ const Home = () => {
             ) : (
               <NoInvoices />
             )}
-            <CreateInvoice isOpen={formIsOpen} setIsOpen={setFormIsOpen} />
+            <CreateInvoice
+              isOpen={formIsOpen}
+              setIsOpen={setFormIsOpen}
+              getInvoices={getInvoices}
+            />
           </Wrapper>
         ) : (
           <NoInvoices />

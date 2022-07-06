@@ -18,6 +18,13 @@ const Wrapper = styled.div`
     display: none;
   }
 `;
+const LinkWraper = styled.div`
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+`;
 
 const BackButton = styled.a`
   max-width: 800px;

@@ -50,7 +50,7 @@ const InvoiceBody = ({ invoice, invoiceId }) => {
       <StyledHead>
         <div className="subject">
           <h3 className="invoiceId">#{invoiceId.substring(0, 5)}</h3>
-          <p>{invoice.projectDescription}</p>
+          <p>{invoice.description}</p>
         </div>
         <Sender>
           <p>{invoice.senderAddress.street}</p>

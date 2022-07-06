@@ -17,7 +17,7 @@ const ButtonWrapper = styled.div`
   gap: 1em;
 `;
 
-const CreateInvoice = ({ setIsOpen, isOpen }) => {
+const CreateInvoice = ({ setIsOpen, isOpen, getInvoices }) => {
   const { currentUser } = useAuth();
 
   const onSubmit = async (values) => {
@@ -26,7 +26,8 @@ const CreateInvoice = ({ setIsOpen, isOpen }) => {
       collection(storage, "users", currentUser.uid, "invoices"),
       createInvoice("Pending", values)
     ).then(() => {
-      console.log("Invoice Created");
+      // console.log("Invoice Created");
+      getInvoices();
       setIsOpen(false);
     });
   };
