@@ -33,17 +33,14 @@ const CreateInvoice = ({ setIsOpen, isOpen, getInvoices }) => {
   };
 
   const addDraft = async (values) => {
-    try {
-      await addDoc(
-        collection(storage, "users", currentUser.uid, "invoices"),
-        createInvoice("Draft", values)
-      ).then(() => {
-        console.log("Invoice Created");
-        setIsOpen(false);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    await addDoc(
+      collection(storage, "users", currentUser.uid, "invoices"),
+      createInvoice("Draft", values)
+    ).then(() => {
+      // console.log("Invoice Created");
+      getInvoices();
+      setIsOpen(false);
+    });
   };
 
   return (

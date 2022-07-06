@@ -2,7 +2,7 @@ import InvoiceStatus from "../shared/InvoiceStatus";
 import { Button } from "../shared/Buttons";
 import { markAsPaid } from "../Utilities/Invoice";
 import styled from "styled-components";
-import Link from "next/link";
+import HomeLink from "./HomeLink";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,24 +18,7 @@ const Wrapper = styled.div`
     display: none;
   }
 `;
-const LinkWraper = styled.div`
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-start;
-`;
 
-const BackButton = styled.a`
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  align-self: flex-start;
-  cursor: pointer;
-  &:hover {
-    color: gray;
-  }
-`;
 const Status = styled.div`
   display: flex;
   flex-direction: row;
@@ -65,12 +48,7 @@ const InvoiceHeader = ({
 }) => {
   return (
     <>
-      <Link href="/">
-        <BackButton>
-          <img src="/icon-arrow-left.svg" alt="left-arrow" />
-          <span> Go Back</span>
-        </BackButton>
-      </Link>
+      <HomeLink />
       <Wrapper>
         <Status>
           <span>Status</span>

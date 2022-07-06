@@ -7,12 +7,14 @@ const Wrapper = styled.div`
   text-align: center;
   font-weight: bold;
   background-color: ${(props) => {
-    if (props.status === "Paid") return "#bbffe8";
-    if (props.status === "Pending") return "#ffd8a6";
+    if (props.status === "Paid") return "#BBFFE8";
+    if (props.status === "Pending") return "#FFD8A6";
+    if (props.status === "Draft") return "#D7D7D7";
   }};
   color: ${(props) => {
     if (props.status === "Paid") return "#33D69F";
     if (props.status === "Pending") return "#FF8F00";
+    if (props.status === "Draft") return "#000";
   }};
   @media (max-width: 768px) {
     grid-column: 2/2;
