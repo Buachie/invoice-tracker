@@ -25,9 +25,7 @@ const InvoiceSummary = () => {
     );
     if (invoiceSnap.exists()) {
       setError("");
-      // console.log("Document data: ", invoiceSnap.data());
       setInvoice(invoiceSnap.data());
-      // console.log("Invoice: ", invoice);
     } else {
       setError("Invoice Not Found");
     }
@@ -35,7 +33,6 @@ const InvoiceSummary = () => {
 
   useEffect(() => {
     getInvoice();
-    // console.log(invoice);
   }, []);
 
   return (

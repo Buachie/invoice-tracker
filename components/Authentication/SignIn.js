@@ -2,7 +2,6 @@ import { Formik, Form, Field, ErrorMessage, Label } from "formik";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import Backdrop from "../form/Backdrop";
 import styled from "styled-components";
-import Link from "next/link";
 
 const Wrapper = styled.div`
   max-width: 400px;

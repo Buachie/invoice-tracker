@@ -77,7 +77,7 @@ const Home = () => {
           setLoginIsOpen={setLoginIsOpen}
         />
         {currentUser ? (
-          <Wrapper>
+          <Wrapper key="display-invoices">
             {invoices.length > 0 ? (
               <InvoiceList invoices={filteredInvoices} />
             ) : (
@@ -93,11 +93,13 @@ const Home = () => {
           <NoInvoices />
         )}
         <SignIn
+          key="sign-in-home"
           isOpen={loginIsOpen}
           setIsOpen={setLoginIsOpen}
           setRegisterIsOpen={setRegisterIsOpen}
         />
         <SignUp
+          key="sign-up-home"
           isOpen={registerIsOpen}
           setIsOpen={setRegisterIsOpen}
           setLoginIsOpen={setLoginIsOpen}

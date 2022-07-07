@@ -32,7 +32,6 @@ const dropdownOptions = [
 
 const InvoiceFields = ({ title }) => {
   const formik = useFormikContext();
-  console.log(displayErrors(formik.errors));
 
   return (
     <>

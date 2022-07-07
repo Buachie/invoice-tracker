@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 const animation = {
   visible: { opacity: 1, transition: { duration: 0.3 } },
@@ -19,9 +19,9 @@ const Backdrop = ({ setIsOpen, children }) => {
   return (
     <Wrapper
       variants={animation}
-      initial='hidden'
-      animate='visible'
-      exit='hidden'
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
       onClick={() => setIsOpen(false)}
     >
       {children}

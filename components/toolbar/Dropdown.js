@@ -63,7 +63,7 @@ const Dropdown = ({ setFilter }) => {
         <h3>
           Filter <span>by status</span>
         </h3>{" "}
-        <img src="/icon-arrow-down.svg" alt="" />
+        <img src="/icon-arrow-down.svg" alt="down-arrow" />
       </Toggle>
       {open && (
         <Options>

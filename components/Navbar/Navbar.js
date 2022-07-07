@@ -31,6 +31,12 @@ const Wrapper = styled.nav`
     @media screen and (max-width: 768px) {
       flex-direction: row;
     }
+
+    button {
+      width: max-content;
+      background: none;
+      border: none;
+    }
   }
 `;
 const UserAvatar = styled.img`
@@ -59,13 +65,12 @@ const Navbar = ({ setLoginIsOpen, setRegisterIsOpen }) => {
   return (
     <Wrapper>
       <Logo />
-      <div className='tools'>
+      <div className="tools">
         <Divider />
-        <UserAvatar
-          src='/user-icon.jpg'
-          ref={triggerRef}
-          onClick={() => setMenuIsOpen(true)}
-        />
+        <button ref={triggerRef} onClick={() => setMenuIsOpen(true)}>
+          <UserAvatar src="/user-icon.jpg" alt="user-icon" />
+        </button>
+
         {show && (
           <NavMenu
             nodeRef={nodeRef}

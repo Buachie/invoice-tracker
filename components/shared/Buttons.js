@@ -39,7 +39,7 @@ export const Button = ({ background, textColor, children, ...rest }) => {
 export const DeleteButton = ({ ...rest }) => {
   return (
     <DeleteItem {...rest}>
-      <img src="/icon-delete.svg" />
+      <img src="/icon-delete.svg" alt="delete-icon" />
     </DeleteItem>
   );
 };

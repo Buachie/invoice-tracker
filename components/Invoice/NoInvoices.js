@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 const NoInvoices = () => {
   return (
     <Wrapper>
-      <img src="/illustration-empty.svg" />
+      <img src="/illustration-empty.svg" alt="empty illustration" />
       <h1>There is nothing here</h1>
       <p>
         Create an invoice by clicking the <br />

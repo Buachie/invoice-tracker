@@ -49,7 +49,6 @@ const Total = styled.div`
 `;
 
 const InvoiceItems = ({ items, total }) => {
-  // console.log(items);
   return (
     <Wrapper>
       <StyledTable>

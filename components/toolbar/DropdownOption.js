@@ -39,7 +39,7 @@ const DropdownOption = ({ id, checked, handleClick, children }) => {
         }}
       />
       <StyledCheckbox>
-        <img src="/icon-check.svg" alt="" />
+        <img src="/icon-check.svg" alt="checkmark" />
       </StyledCheckbox>
       <span>{children}</span>
     </StyledOption>

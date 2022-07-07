@@ -1,13 +1,13 @@
 import { useAuth } from "../../contexts/AuthenticationContext";
-import { Formik } from "formik";
-import Form from "./Form";
-import { initialValues, validationSchema } from "./data";
 import { storage } from "../../pages/api/firebaseconfig";
 import { addDoc, collection } from "firebase/firestore";
-import InvoiceFields from "./InvoiceFields";
+import { Formik } from "formik";
+import { initialValues, validationSchema } from "./data";
 import { createInvoice } from "../../utilities/Form";
 import { AnimatePresence } from "framer-motion";
 import { Button } from "../shared/Buttons";
+import Form from "./Form";
+import InvoiceFields from "./InvoiceFields";
 import styled from "styled-components";
 
 const ButtonWrapper = styled.div`
@@ -21,12 +21,10 @@ const CreateInvoice = ({ setIsOpen, isOpen, getInvoices }) => {
   const { currentUser } = useAuth();
 
   const onSubmit = async (values) => {
-    console.log(createInvoice("Pending", values));
     await addDoc(
       collection(storage, "users", currentUser.uid, "invoices"),
       createInvoice("Pending", values)
     ).then(() => {
-      // console.log("Invoice Created");
       getInvoices();
       setIsOpen(false);
     });
@@ -37,7 +35,6 @@ const CreateInvoice = ({ setIsOpen, isOpen, getInvoices }) => {
       collection(storage, "users", currentUser.uid, "invoices"),
       createInvoice("Draft", values)
     ).then(() => {
-      // console.log("Invoice Created");
       getInvoices();
       setIsOpen(false);
     });
@@ -74,13 +71,6 @@ const CreateInvoice = ({ setIsOpen, isOpen, getInvoices }) => {
                 <Button background="#7c5dfa" textColor="#fff" type="submit">
                   Save &amp; Send
                 </Button>
-                {/* <button type="button" onClick={() => setIsOpen(false)}>
-                  Discard
-                </button>
-                <button onClick={() => addDraft(formik.values)}>
-                  Save Draft
-                </button>
-                <button type="submit">Save &amp; Send</button> */}
               </ButtonWrapper>
             </Form>
           )}

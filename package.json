@@ -20,6 +20,7 @@
     "react-datepicker": "^4.7.0",
     "react-dom": "18.0.0",
     "styled-components": "^5.3.5",
+    "vercel": "^26.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

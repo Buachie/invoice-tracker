@@ -27,7 +27,7 @@ const AddInvoiceButton = styled.button`
   padding: 0.8em;
   border: none;
   border-radius: 30px;
-  background-color: #7c5dfa;
+  background-color: #5833f1;
   color: #fff;
   font-weight: bold;
   display: flex;
@@ -73,7 +73,7 @@ const Toolbar = ({
       setLoginIsOpen(true);
     }
   };
-  // console.log(invoices);
+
   return (
     <Wrapper>
       <div className="invoiceData">
@@ -88,7 +88,7 @@ const Toolbar = ({
         <Dropdown setFilter={setFilter} />
         <AddInvoiceButton onClick={detectUserPermission}>
           <div className="plusIcon">
-            <img src="/icon-plus.svg" />
+            <img src="/icon-plus.svg" alt="plus-icon" />
           </div>
           <p>
             New <span>Invoice</span>

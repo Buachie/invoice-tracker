@@ -103,7 +103,7 @@ const Invoice = ({ id, paymentDue, clientName, total, status }) => {
         <Total>{`$${total}`}</Total>
         <InvoiceStatus status={status} />
         <div className="arrow">
-          <img src="/icon-arrow-right.svg" alt="" />
+          <img src="/icon-arrow-right.svg" alt="right-arrow" />
         </div>
       </Wrapper>
     </Link>
