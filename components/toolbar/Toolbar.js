@@ -34,6 +34,10 @@ const AddInvoiceButton = styled.button`
   flex-direction: row;
   align-items: center;
   gap: 1em;
+  cursor: pointer;
+  :hover {
+    background-color: #7c5dff;
+  }
 
   .plusIcon {
     background-color: #fff;
@@ -42,6 +46,9 @@ const AddInvoiceButton = styled.button`
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+  }
+  p {
+    margin: 0;
   }
   @media screen and (max-width: 550px) {
     span {
