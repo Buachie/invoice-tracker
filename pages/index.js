@@ -10,6 +10,7 @@ import InvoiceList from "../components/Invoice/InvoiceList";
 import { AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import NoInvoices from "../components/Invoice/NoInvoices";
+import SignUp from "../components/Authentication/SignUp";
 
 const Wrapper = styled.div`
   padding: 0 2rem;
@@ -29,6 +30,7 @@ const Home = () => {
   const [invoices, setInvoices] = useState([]);
   const [formIsOpen, setFormIsOpen] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
+  const [registerIsOpen, setRegisterIsOpen] = useState(false);
   const [filter, setFilter] = useState(null);
   const [filteredInvoices, setFilteredInvoices] = useState(null);
 
@@ -90,7 +92,16 @@ const Home = () => {
         ) : (
           <NoInvoices />
         )}
-        <SignIn isOpen={loginIsOpen} setIsOpen={setLoginIsOpen} />
+        <SignIn
+          isOpen={loginIsOpen}
+          setIsOpen={setLoginIsOpen}
+          setRegisterIsOpen={setRegisterIsOpen}
+        />
+        <SignUp
+          isOpen={registerIsOpen}
+          setIsOpen={setRegisterIsOpen}
+          setLoginIsOpen={setLoginIsOpen}
+        />
       </AnimatePresence>
     </>
   );

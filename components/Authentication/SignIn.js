@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage, Label } from "formik";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import Backdrop from "../form/Backdrop";
 import styled from "styled-components";
+import Link from "next/link";
 
 const Wrapper = styled.div`
   max-width: 400px;
@@ -12,36 +13,50 @@ const Wrapper = styled.div`
   left: 50%;
   transform: translate(-40%, -50%);
   z-index: 1000;
-`
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 20px;
+`;
 
 const StyledForm = styled(Form)`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.3em;
-  background-color: #fff;
-  padding: 1em;
-  border-radius: 20px;
-`
+`;
 
 const StyledField = styled(Field)`
   padding: 0.5em;
   border-radius: 30px;
   border: 1px solid #dfe3fa;
-`
+`;
 const SubmitButton = styled.button`
   padding: 0.5em;
   border-radius: 30px;
   border: 1px solid #dfe3fa;
-  background-color: #7C5DFA;
+  background-color: #7c5dfa;
   color: #fff;
   transition: 0.3s ease-out;
-  &:hover{
-    background-color: lighten(#7C5DFA, 5%);
+  &:hover {
+    background-color: lighten(#7c5dfa, 5%);
   }
-`
+`;
+const LinkWrapper = styled.div`
+  display: flex;
+`;
 
-const SignIn = ({ isOpen, setIsOpen }) => {
+const ChangeAuthButton = styled.button`
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  &:hover {
+    color: purple;
+  }
+`;
+
+const SignIn = ({ isOpen, setIsOpen, setRegisterIsOpen }) => {
   const { login } = useAuth();
   return (
     <>
@@ -90,15 +105,23 @@ const SignIn = ({ isOpen, setIsOpen }) => {
                     autoComplete="current-password"
                   />
                   <ErrorMessage name="password" component="div" />
-                  <SubmitButton
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
+                  <SubmitButton type="submit" disabled={isSubmitting}>
                     Sign In
                   </SubmitButton>
                 </StyledForm>
               )}
             </Formik>
+            <LinkWrapper>
+              <p>Don't have an account?</p>
+              <ChangeAuthButton
+                onClick={() => {
+                  setIsOpen(false);
+                  setRegisterIsOpen(true);
+                }}
+              >
+                Create one here
+              </ChangeAuthButton>
+            </LinkWrapper>
           </Wrapper>
         </>
       )}

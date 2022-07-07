@@ -54,11 +54,11 @@ export const validationSchema = Yup.object().shape({
       Yup.object().shape({
         name: Yup.string().required("- All fields must be filled."),
         qty: Yup.number()
-          .min(1)
+          .min(0)
           .typeError("- Invalid input.")
           .required("- All fields must be filled."),
         price: Yup.number()
-          .min(1)
+          .min(0)
           .typeError("- Invalid input.")
           .required("- All fields must be filled."),
         total: Yup.number(),

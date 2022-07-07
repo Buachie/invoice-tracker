@@ -12,6 +12,9 @@ const Wrapper = styled.div`
   left: 50%;
   transform: translate(-40%, -50%);
   z-index: 1000;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 20px;
 `;
 
 const StyledForm = styled(Form)`
@@ -19,9 +22,6 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 0.3em;
-  background-color: #fff;
-  padding: 1em;
-  border-radius: 20px;
 `;
 
 const StyledField = styled(Field)`
@@ -40,7 +40,22 @@ const SubmitButton = styled.button`
     background-color: lighten(#7c5dfa, 5%);
   }
 `;
-const SignUp = ({ isOpen, setIsOpen }) => {
+
+const LinkWrapper = styled.div`
+  display: flex;
+`;
+
+const ChangeAuthButton = styled.button`
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  &:hover {
+    color: purple;
+  }
+`;
+const SignUp = ({ isOpen, setIsOpen, setLoginIsOpen }) => {
   const { signup } = useAuth();
   return (
     <>
@@ -105,6 +120,17 @@ const SignUp = ({ isOpen, setIsOpen }) => {
                 </StyledForm>
               )}
             </Formik>
+            <LinkWrapper>
+              <p>Already have an account?</p>
+              <ChangeAuthButton
+                onClick={() => {
+                  setIsOpen(false);
+                  setLoginIsOpen(true);
+                }}
+              >
+                Log in
+              </ChangeAuthButton>
+            </LinkWrapper>
           </Wrapper>
         </>
       )}

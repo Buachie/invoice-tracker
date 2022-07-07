@@ -16,7 +16,7 @@ body{
   font-family: 'Spartan', sans-serif;
   background-color: #f8f8f8;
 }
-`
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
-`
+`;
 
 const Main = styled.main`
   max-width: 1100px;
@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
 
   return (
     <AuthProvider>
-      <GlobalStyle/>
+      <GlobalStyle />
       <Wrapper onClick={() => setMenuIsOpen(false)}>
         <Navbar
           isOpen={menuIsOpen}
@@ -55,11 +55,13 @@ const Layout = ({ children }) => {
           setLoginIsOpen={setLoginIsOpen}
           setRegisterIsOpen={setRegisterIsOpen}
         />
-        <SignIn isOpen={loginIsOpen} setIsOpen={setLoginIsOpen} />
+        <SignIn
+          isOpen={loginIsOpen}
+          setIsOpen={setLoginIsOpen}
+          setRegisterIsOpen={setRegisterIsOpen}
+        />
         <SignUp isOpen={registerIsOpen} setIsOpen={setRegisterIsOpen} />
-        <Main onClick={() => setMenuIsOpen(false)}>
-          {children}
-        </Main>
+        <Main onClick={() => setMenuIsOpen(false)}>{children}</Main>
       </Wrapper>
     </AuthProvider>
   );

@@ -19,7 +19,7 @@ const Errors = styled.div`
   margin-top: -1em;
 `;
 
-const Error = styled.p`
+const Error = styled.div`
   color: red;
   font-weight: bold;
 `;
