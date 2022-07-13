@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 const Logo = () => {
   return (
     <Wrapper>
-      <img className='icon' src='/logo.svg' alt='invoicer-logo' />
+      <img className="icon" src="/logo.svg" alt="invoicer-logo" />
     </Wrapper>
   );
 };

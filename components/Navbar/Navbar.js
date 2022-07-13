@@ -28,16 +28,18 @@ const Wrapper = styled.nav`
     justify-content: space-around;
     gap: 0.4em;
     position: relative;
+    button {
+      cursor: pointer;
+    }
     @media screen and (max-width: 768px) {
       flex-direction: row;
     }
-
-    button {
-      width: max-content;
-      background: none;
-      border: none;
-    }
   }
+`;
+const MenuToggle = styled.button`
+  width: max-content;
+  background: none;
+  border: none;
 `;
 const UserAvatar = styled.img`
   border-radius: 50%;
@@ -67,9 +69,9 @@ const Navbar = ({ setLoginIsOpen, setRegisterIsOpen }) => {
       <Logo />
       <div className="tools">
         <Divider />
-        <button ref={triggerRef} onClick={() => setMenuIsOpen(true)}>
+        <MenuToggle ref={triggerRef} onClick={() => setMenuIsOpen(true)}>
           <UserAvatar src="/user-icon.jpg" alt="user-icon" />
-        </button>
+        </MenuToggle>
 
         {show && (
           <NavMenu

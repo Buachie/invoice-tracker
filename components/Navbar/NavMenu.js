@@ -25,10 +25,11 @@ const StyledButton = styled.button`
   padding: 1em;
   border: none;
   border-radius: 10px;
+  background-color: #7c5dfa;
+  color: #fff;
   &:hover {
     transition: 0.3s ease-in-out;
-    background-color: $primary-color;
-    color: #fff;
+    background-color: #9277ff;
   }
 `;
 const NavMenu = ({ isOpen, setIsOpen, setLoginIsOpen, setRegisterIsOpen }) => {

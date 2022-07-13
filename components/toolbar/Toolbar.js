@@ -35,6 +35,7 @@ const AddInvoiceButton = styled.button`
   align-items: center;
   gap: 1em;
   cursor: pointer;
+  transition: 0.3s ease-out;
   :hover {
     background-color: #7c5dff;
   }
