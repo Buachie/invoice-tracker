@@ -31,6 +31,17 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, setInvoice, invoiceId }) => {
     });
   };
 
+  const publishInvoice = async (values) => {
+    await setDoc(
+      doc(storage, "users", currentUser.uid, "invoices", invoiceId),
+      createInvoice("Pending", values),
+      { merge: true }
+    ).then(() => {
+      setIsOpen(false);
+      setInvoice();
+    });
+  };
+
   return (
     <AnimatePresence key="edit-invoice">
       {isOpen && (
@@ -64,6 +75,16 @@ const EditInvoice = ({ setIsOpen, isOpen, invoice, setInvoice, invoiceId }) => {
                 <Button background="#7c5dfa" textColor="#fff" type="submit">
                   Update Invoice
                 </Button>
+                {invoice.status === "Draft" && (
+                  <Button
+                    type="button"
+                    background="#7c5dfa"
+                    textColor="#fff"
+                    onClick={() => publishInvoice(formik.values)}
+                  >
+                    Publish
+                  </Button>
+                )}
               </ButtonWrapper>
             </Form>
           )}

@@ -75,6 +75,7 @@ const Home = () => {
           filter={filteredInvoices}
           setFilter={setFilter}
           setLoginIsOpen={setLoginIsOpen}
+          key="toolbar"
         />
         {currentUser ? (
           <Wrapper key="display-invoices">

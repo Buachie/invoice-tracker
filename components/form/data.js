@@ -59,6 +59,7 @@ export const validationSchema = Yup.object().shape({
           .required("- All fields must be filled."),
         price: Yup.number()
           .min(0)
+          .max(10000)
           .typeError("- Invalid input.")
           .required("- All fields must be filled."),
         total: Yup.number(),
