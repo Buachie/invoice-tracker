@@ -11,6 +11,11 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  .invoiceData {
+    h1 {
+      font-size: 1.5em;
+    }
+  }
   @media (max-width: 768px) {
     padding: 0 0.5em;
   }

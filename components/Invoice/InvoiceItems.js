@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { addCommas } from "../Utilities/Invoice";
 
 const Wrapper = styled.div`
   background-color: #f9fafe;
@@ -67,8 +68,8 @@ const InvoiceItems = ({ items, total }) => {
               <tr key={key}>
                 <td>{item.name}</td>
                 <td>{item.qty}</td>
-                <td>${item.price}</td>
-                <td>${item.total}</td>
+                <td>${addCommas(item.price)}</td>
+                <td>${addCommas(item.total)}</td>
               </tr>
             );
           })}
@@ -76,7 +77,7 @@ const InvoiceItems = ({ items, total }) => {
       </StyledTable>
       <Total>
         <p>Amount Due</p>
-        <h2>${total}</h2>
+        <h2>${addCommas(total)}</h2>
       </Total>
     </Wrapper>
   );

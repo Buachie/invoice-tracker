@@ -30,3 +30,7 @@ export function markAsPaid(invoice, currentUser) {
 export function deleteInvoice(invoice, currentUser) {
   deleteDoc(doc(storage, "users", currentUser.uid, "invoices", invoice));
 }
+
+export function addCommas(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

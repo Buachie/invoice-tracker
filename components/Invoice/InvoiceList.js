@@ -18,6 +18,7 @@ const Wrapper = styled(motion.div)`
   gap: 0.5em;
 `;
 const InvoiceList = ({ invoices }) => {
+  // console.log(invoices);
   return (
     <>
       {invoices && (

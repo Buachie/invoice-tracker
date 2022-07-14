@@ -1,4 +1,3 @@
-import { yupToFormErrors } from "formik";
 import * as Yup from "yup";
 
 export const initialValues = {
@@ -46,7 +45,9 @@ export const validationSchema = Yup.object().shape({
     postCode: Yup.string().required("- All fields must be filled."),
     country: Yup.string().required("- All fields must be filled."),
   }),
-  createdAt: Yup.date().required("- All fields must be filled."),
+  createdAt: Yup.date()
+    .typeError("- Invalid date.")
+    .required("- All fields must be filled."),
   paymentTerms: Yup.string().required("- All fields must be filled."),
   description: Yup.string().required("- All fields must be filled."),
   items: Yup.array()
