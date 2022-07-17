@@ -11,9 +11,14 @@ const InputWrapper = styled.div`
   flex-direction: row;
   gap: 1em;
   flex: 1;
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
+`;
+
+const SectionTitle = styled.h4`
+  color: #7c5dfa;
 `;
 const Errors = styled.div`
   margin-top: -1em;
@@ -36,14 +41,14 @@ const InvoiceFields = ({ title }) => {
   return (
     <>
       <h2>{title}</h2>
-      <h4>Bill From</h4>
+      <SectionTitle>Bill From</SectionTitle>
       <Input label="Street Address" name="senderAddress.street" />
       <InputWrapper>
         <Input label="City" name="senderAddress.city" />
         <Input label="Post Code" name="senderAddress.postCode" />
         <Input label="Country" name="senderAddress.country" />
       </InputWrapper>
-      <h4>Bill To</h4>
+      <SectionTitle>Bill To</SectionTitle>
       <Input label="Client Name" name="clientName" />
       <Input label="Client Email" name="clientEmail" />
       <Input label="Street Address" name="clientAddress.street" />
@@ -61,7 +66,7 @@ const InvoiceFields = ({ title }) => {
         />
       </InputWrapper>
       <Input label="Project Description" name="description" />
-      <h4>Item List</h4>
+      <SectionTitle>Item List</SectionTitle>
       <Items name="items" />
       {formik.submitCount > 0 && formik.errors && (
         <Errors>

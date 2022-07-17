@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { addCommas } from "../Utilities/Invoice";
+import { addCommas, roundToNearestCent } from "../Utilities/Invoice";
 
 const Wrapper = styled.div`
   background-color: #f9fafe;
@@ -68,8 +68,8 @@ const InvoiceItems = ({ items, total }) => {
               <tr key={key}>
                 <td>{item.name}</td>
                 <td>{item.qty}</td>
-                <td>${addCommas(item.price)}</td>
-                <td>${addCommas(item.total)}</td>
+                <td>${roundToNearestCent(addCommas(item.price))}</td>
+                <td>${roundToNearestCent(addCommas(item.total))}</td>
               </tr>
             );
           })}
@@ -77,7 +77,7 @@ const InvoiceItems = ({ items, total }) => {
       </StyledTable>
       <Total>
         <p>Amount Due</p>
-        <h2>${addCommas(total)}</h2>
+        <h2>${roundToNearestCent(addCommas(total))}</h2>
       </Total>
     </Wrapper>
   );

@@ -111,7 +111,7 @@ const SignIn = ({ isOpen, setIsOpen, setRegisterIsOpen }) => {
               )}
             </Formik>
             <LinkWrapper>
-              <p>Don't have an account?</p>
+              <p>Don&apos;t have an account?</p>
               <ChangeAuthButton
                 onClick={() => {
                   setIsOpen(false);

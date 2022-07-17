@@ -10,6 +10,8 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 
   p {
     color: #7e88c3;

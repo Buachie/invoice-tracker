@@ -11,10 +11,11 @@ import InvoiceFields from "./InvoiceFields";
 import styled from "styled-components";
 
 const ButtonWrapper = styled.div`
-  padding: 1em;
+  /* padding: 1em; */
   display: flex;
   flex-direction: row;
   gap: 1em;
+  align-self: flex-end;
 `;
 
 const CreateInvoice = ({ setIsOpen, isOpen, getInvoices }) => {
@@ -61,12 +62,12 @@ const CreateInvoice = ({ setIsOpen, isOpen, getInvoices }) => {
                   Discard
                 </Button>
                 <Button
-                  background="#f0f0f0"
-                  textColor="#000"
+                  background="#373B53"
+                  textColor="#888EB0"
                   type="button"
                   onClick={() => addDraft(formik.values)}
                 >
-                  Save Draft
+                  Save as Draft
                 </Button>
                 <Button background="#7c5dfa" textColor="#fff" type="submit">
                   Save &amp; Send

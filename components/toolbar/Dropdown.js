@@ -6,6 +6,7 @@ const Toggle = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 0.5em;
   border: none;
   background: transparent;
   position: relative;
@@ -21,7 +22,10 @@ const Options = styled.div`
   background-color: #fff;
   padding: 1em;
   border-radius: 15px;
-  box-shadow: 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 `;
 
 const Dropdown = ({ setFilter }) => {
@@ -59,7 +63,7 @@ const Dropdown = ({ setFilter }) => {
 
   return (
     <div ref={dropdown} open={open}>
-      <Toggle onClick={() => setOpen(!open)}>
+      <Toggle type="button" onClick={() => setOpen(!open)}>
         <h3>
           Filter <span>by status</span>
         </h3>{" "}

@@ -6,9 +6,13 @@ const StyledOption = styled.label`
   flex-direction: row;
   align-items: center;
   cursor: pointer;
+  font-weight: bold;
 
   input {
     display: none;
+    > span {
+      opacity: 0;
+    }
     :hover + span {
       border: 1px solid #7c5dfa;
     }
@@ -27,6 +31,7 @@ const StyledCheckbox = styled.span`
   width: 1rem;
   height: 1rem;
   border-radius: 2px;
+  background-color: #dfe3fa;
 `;
 const DropdownOption = ({ id, checked, handleClick, children }) => {
   return (

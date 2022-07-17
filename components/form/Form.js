@@ -9,7 +9,7 @@ const animation = {
 };
 
 const Wrapper = styled(motion.div)`
-  padding: 2em;
+  padding: 0.5em;
   padding-left: 6em;
   position: absolute;
   top: 0;
@@ -20,6 +20,10 @@ const Wrapper = styled(motion.div)`
   background-color: #fff;
   border-radius: 0 20px 20px 0;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
   @media (max-width: 768px) {
     margin-top: 5em;
     width: 85%;

@@ -14,8 +14,10 @@ const Wrapper = styled.div`
   background-color: #fff;
   padding: 1em;
   border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   @media (max-width: 400px) {
-    display: none;
+    /* display: none; */
   }
 `;
 
@@ -33,7 +35,7 @@ const Status = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   gap: 1em;
-  @media (max-wdith: 400px) {
+  @media (max-width: 400px) {
     display: none;
   }
 `;

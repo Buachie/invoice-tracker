@@ -8,9 +8,9 @@ const Wrapper = styled.div`
 `;
 
 const Label = styled.label`
-  font-weight: 600;
+  font-weight: 200;
   color: #7e88c3;
-  font-size: 0.8em;
+  font-size: 0.9em;
 `;
 const StyledInput = styled.input`
   display: block;

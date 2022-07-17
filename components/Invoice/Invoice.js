@@ -2,6 +2,7 @@ import InvoiceStatus from "../shared/InvoiceStatus";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { addCommas, roundToNearestCent } from "../Utilities/Invoice";
 
 const animation = {
   hidden: { opacity: 0 },
@@ -16,7 +17,7 @@ const Wrapper = styled(motion.a)`
   text-decoration: none;
   background-color: #fff;
   padding: 1em;
-  border: none;
+  border: 2px solid #fff;
   border-radius: 8px;
   width: 100%;
   display: grid;
@@ -24,7 +25,13 @@ const Wrapper = styled(motion.a)`
   grid-template-rows: min-content;
   align-items: center;
   gap: 0.8em;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    border: 2px solid #7c5dfa;
+  }
   @media (max-width: 768px) {
     grid-template-columns: auto;
   }
@@ -41,8 +48,10 @@ const Wrapper = styled(motion.a)`
 const InvoiceID = styled.div`
   font-weight: bold;
   text-transform: uppercase;
-  text span {
-    font-weight: normal;
+  color: #000;
+  span {
+    color: #7e88c3;
+    /* font-weight: normal; */
   }
   @media (max-width: 768px) {
     grid-column: 1/2;
@@ -77,6 +86,7 @@ const ClientName = styled.div`
 const Total = styled.div`
   grid-column: 4/5;
   font-weight: bold;
+  color: #000;
   @media (max-width: 768px) {
     grid-column: 1/3;
     grid-row: 3/3;
@@ -100,7 +110,7 @@ const Invoice = ({ id, paymentDue, clientName, total, status }) => {
         </InvoiceID>
         <DueDate>Due {paymentDue}</DueDate>
         <ClientName>{clientName}</ClientName>
-        <Total>{`$${total}`}</Total>
+        <Total>{`$${roundToNearestCent(addCommas(total))}`}</Total>
         <InvoiceStatus status={status} />
         <div className="arrow">
           <img src="/icon-arrow-right.svg" alt="right-arrow" />

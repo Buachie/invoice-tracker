@@ -34,3 +34,7 @@ export function deleteInvoice(invoice, currentUser) {
 export function addCommas(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+export function roundToNearestCent(num) {
+  return parseFloat(num).toFixed(2);
+}

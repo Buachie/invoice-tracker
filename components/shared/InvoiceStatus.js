@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  display: flex;
+  gap: 0.4em;
+  justify-content: center;
   padding: 1em;
   border-radius: 6px;
   width: 100px;

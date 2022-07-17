@@ -32,7 +32,7 @@ const AddInvoiceButton = styled.button`
   padding: 0.8em;
   border: none;
   border-radius: 30px;
-  background-color: #5833f1;
+  background-color: #7c5dfa;
   color: #fff;
   font-weight: bold;
   display: flex;
@@ -42,7 +42,7 @@ const AddInvoiceButton = styled.button`
   cursor: pointer;
   transition: 0.3s ease-out;
   :hover {
-    background-color: #7c5dff;
+    background-color: #9277ff;
   }
 
   .plusIcon {
