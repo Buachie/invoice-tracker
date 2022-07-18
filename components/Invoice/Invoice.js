@@ -4,14 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { addCommas, roundToNearestCent } from "../Utilities/Invoice";
 
-const animation = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.4 },
-  },
-};
-
 const Wrapper = styled(motion.a)`
   font-size: 1em;
   text-decoration: none;
@@ -95,15 +87,9 @@ const Total = styled.div`
 `;
 
 const Invoice = ({ id, paymentDue, clientName, total, status }) => {
-  // const router = useRouter();/
-
   return (
     <Link href={`/invoice/${id}`} passHref={true} scroll={false}>
-      <Wrapper
-        // onClick={showFullInvoiceHandler}
-        variants={animation}
-        animate="visible"
-      >
+      <Wrapper>
         <InvoiceID>
           <span>#</span>
           {id.substring(0, 5)}
