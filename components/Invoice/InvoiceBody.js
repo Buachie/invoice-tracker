@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import InvoiceItems from "./InvoiceItems";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   width: 100%;
   max-width: 800px;
   padding: 1em;
@@ -46,9 +47,24 @@ const InvoiceContent = styled.div`
   }
 `;
 
+const animation = {
+  hidden: {
+    opacity: 0,
+    y: -50,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      delay: 0.4,
+    },
+  },
+};
+
 const InvoiceBody = ({ invoice, invoiceId }) => {
   return (
-    <Wrapper>
+    <Wrapper variants={animation} initial="hidden" animate="show">
       <StyledHead>
         <div className="subject">
           <h3 className="invoiceId">#{invoiceId.substring(0, 5)}</h3>

@@ -25,7 +25,7 @@ const containerAnimation = {
   },
 };
 
-const item = {
+const itemAnimation = {
   hidden: { opacity: 0 },
   show: { opacity: 1 },
 };
@@ -37,7 +37,7 @@ const InvoiceList = ({ invoices }) => {
           {invoices.map((invoice, count) => {
             return (
               <ItemWrapper
-                variants={item}
+                variants={itemAnimation}
                 transition={{ duration: 0.3, delay: count * 0.2 }}
               >
                 <Invoice

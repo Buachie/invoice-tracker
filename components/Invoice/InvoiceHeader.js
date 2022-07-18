@@ -3,8 +3,9 @@ import { Button } from "../shared/Buttons";
 import { markAsPaid } from "../Utilities/Invoice";
 import styled from "styled-components";
 import HomeLink from "./HomeLink";
+import { motion } from "framer-motion";
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -40,6 +41,21 @@ const ButtonWrapper = styled.div`
   }
 `;
 
+const animation = {
+  hidden: {
+    opacity: 0,
+    y: -50,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      delay: 0.2,
+    },
+  },
+};
+
 const InvoiceHeader = ({
   status,
   id,
@@ -51,7 +67,7 @@ const InvoiceHeader = ({
   return (
     <>
       <HomeLink />
-      <Wrapper>
+      <Wrapper variants={animation} initial="hidden" animate="show">
         <Status>
           <span>Status</span>
           <InvoiceStatus status={status} />
