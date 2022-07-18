@@ -37,11 +37,11 @@ const InvoiceList = ({ invoices }) => {
           {invoices.map((invoice, count) => {
             return (
               <ItemWrapper
+                key={invoice.id}
                 variants={itemAnimation}
                 transition={{ duration: 0.3, delay: count * 0.2 }}
               >
                 <Invoice
-                  key={invoice.id}
                   id={invoice.id}
                   paymentDue={invoice.paymentDue}
                   clientName={invoice.clientName}
