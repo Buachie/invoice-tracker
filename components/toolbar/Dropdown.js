@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useAuth } from "../../contexts/AuthenticationContext";
 import DropdownOption from "./DropdownOption";
 import styled from "styled-components";
 
@@ -29,6 +30,7 @@ const Options = styled.div`
 `;
 
 const Dropdown = ({ setFilter }) => {
+  const { currentUser } = useAuth();
   const dropdown = useRef();
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([
@@ -63,7 +65,11 @@ const Dropdown = ({ setFilter }) => {
 
   return (
     <div ref={dropdown} open={open}>
-      <Toggle type="button" onClick={() => setOpen(!open)}>
+      <Toggle
+        type="button"
+        onClick={() => setOpen(!open)}
+        disabled={!currentUser}
+      >
         <h3>
           Filter <span>by status</span>
         </h3>{" "}
