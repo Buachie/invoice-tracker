@@ -11,11 +11,11 @@ import InvoiceFields from "./InvoiceFields";
 import styled from "styled-components";
 
 const ButtonWrapper = styled.div`
-  /* padding: 1em; */
   display: flex;
   flex-direction: row;
   gap: 1em;
   align-self: flex-end;
+  padding: 1em 0;
 `;
 
 const CreateInvoice = ({ setIsOpen, isOpen, getInvoices }) => {

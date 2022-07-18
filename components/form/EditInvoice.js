@@ -15,6 +15,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1em;
+  padding: 1em 0;
 `;
 
 const EditInvoice = ({ setIsOpen, isOpen, invoice, setInvoice, invoiceId }) => {

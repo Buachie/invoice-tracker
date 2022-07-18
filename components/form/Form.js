@@ -20,13 +20,10 @@ const Wrapper = styled(motion.div)`
   background-color: #fff;
   border-radius: 0 20px 20px 0;
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2em;
   @media (max-width: 768px) {
     margin-top: 5em;
     width: 85%;
+    height: calc(100% - 80px);
     padding: 1em;
   }
 
@@ -46,6 +43,13 @@ const Wrapper = styled(motion.div)`
     background: transparent;
   }
 `;
+
+const StyledFormikForm = styled(FormikForm)`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 const Form = ({ setIsOpen, children }) => {
   return (
     <>
@@ -56,7 +60,7 @@ const Form = ({ setIsOpen, children }) => {
         animate="visible"
         exit="hidden"
       >
-        <FormikForm>{children}</FormikForm>
+        <StyledFormikForm>{children}</StyledFormikForm>
       </Wrapper>
     </>
   );

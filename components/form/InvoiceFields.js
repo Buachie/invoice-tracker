@@ -39,7 +39,7 @@ const InvoiceFields = ({ title }) => {
   const formik = useFormikContext();
 
   return (
-    <>
+    <div>
       <h2>{title}</h2>
       <SectionTitle>Bill From</SectionTitle>
       <Input label="Street Address" name="senderAddress.street" />
@@ -75,7 +75,7 @@ const InvoiceFields = ({ title }) => {
           })}
         </Errors>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage, Label } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import Backdrop from "../form/Backdrop";
 import styled from "styled-components";
