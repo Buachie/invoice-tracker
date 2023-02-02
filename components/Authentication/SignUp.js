@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage, Label } from "formik";
 import { useAuth } from "../../contexts/AuthenticationContext";
 import Backdrop from "../form/Backdrop";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   max-width: 400px;
@@ -57,6 +58,7 @@ const ChangeAuthButton = styled.button`
 `;
 const SignUp = ({ isOpen, setIsOpen, setLoginIsOpen }) => {
   const { signup } = useAuth();
+  const [firebaseError, setFirebaseError] = useState("");
   return (
     <>
       {isOpen && (
@@ -86,13 +88,15 @@ const SignUp = ({ isOpen, setIsOpen, setLoginIsOpen }) => {
                   });
                   setSubmitting(false);
                 } catch (error) {
-                  return error;
+                  setFirebaseError(error.value);
+                  console.log(firebaseError);
                 }
               }}
             >
               {({ isSubmitting }) => (
                 <StyledForm>
                   <h2>Sign Up</h2>
+                  <div>{firebaseError}</div>
                   <StyledField
                     type="email"
                     name="email"
